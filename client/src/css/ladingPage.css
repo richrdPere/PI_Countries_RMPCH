@@ -1,0 +1,68 @@
+/* Lading Page */
+.header{
+    background-color: var(--negro);
+    background-image: url("../img/countries.png");
+
+    height: 50rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+/* Logo */
+.logo{
+    color: var(--blanco);
+
+}
+.logo_nombre{
+    font-weight: 400;
+}
+.logo_bold {
+    font-weight: 700;
+}
+.header_titulo {
+    text-align: center;
+    color: var(--blanco);
+    margin-top: 8rem;
+}
+/* Titulo */
+@media (min-width: 768px) {
+    .header_texto {
+        margin-top: 15rem;
+    }
+}
+.barra {
+    padding-top: 4rem;
+}
+
+@media (min-width: 768px) {
+    .barra {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* Navegacion */
+@media (min-width: 768px) {
+    .navegacion {
+        display: flex;
+        gap: 6rem;
+    }
+}
+.navegacion_enlace {
+    display: block;
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--blanco);
+    /* border-radius: 1rem;
+    padding: 1rem 1rem; */
+    font-weight: bold;
+    /* margin: 1.5em; */
+
+    &:hover{
+        background-color: var(--blanco);
+        color: var(--negro);
+        padding: 0.7rem 0.7rem; 
+        border-radius: 0.5rem;
+    }
+}
