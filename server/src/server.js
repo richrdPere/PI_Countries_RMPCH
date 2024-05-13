@@ -5,10 +5,13 @@ const cors = require("cors");
 
 const server = express();
 
+// Middlewares
 server.use(morgan("dev"));
+
 server.use(express.json());
 server.use(cors());
 
+// Ruta principal
 server.use(router);
 
 module.exports = server;

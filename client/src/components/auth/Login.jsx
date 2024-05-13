@@ -1,7 +1,34 @@
+// UseState
+import { useState, useEffect } from 'react'
+
 import { useNavigate, Link} from 'react-router-dom';
 import "../../css/loginPage.css";
 
-const Login = () => {
+const Login = ({login}) => {
+    // Use States
+    const [userData, setUserData] = useState({
+        email: "",
+        password: ""
+    });
+
+    //const [errors, setErrors] = useState({});
+
+
+    // 1.-Funcion - handlerChange
+    // ----------------------------
+    const handlerChange = (event) => {
+        //setErrors(validation(userData));
+        setUserData({...userData, [event.target.name]: event.target.value});
+    }
+
+    // 2.-Funcion - handlerSubmit
+    // ----------------------------
+    const handlerSubmit = (e) => {
+        e.preventDefault();
+        login(userData)
+    }
+
+
 
     return (
         <>
@@ -11,16 +38,17 @@ const Login = () => {
                 <h2>Iniciar Sesión</h2>
 
                 {/* Log in */}
-                <form>
+                <form onSubmit={handlerSubmit}>
+
                     {/* Email */}
                     <div className='user-box'>
-                        <input type="email" name="email"/>
+                        <input type="email" name="email" onChange={handlerChange}/>
                         <label>Email</label>
                     </div>
                                 
                     {/* Password */}
                     <div className='user-box'>
-                        <input  type="password" name="password"/>
+                        <input  type="password" name="password" onChange={handlerChange}/>
                         <label>Password</label>
                     </div>
                             
@@ -31,13 +59,13 @@ const Login = () => {
                     </div> */}
 
                     {/* Submit */}
-                    <a>
+                    <Link to={'/homePage'}>
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
                         Submit
-                    </a>
+                    </Link>
                 </form>
             </div>
             

@@ -1,0 +1,222 @@
+/* Detail Activities */
+.header-culture{
+    background-color: var(--negro);
+    background-image: url("../../public/img/img_font5.webp");
+
+    height: 50rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+/* Logo */
+.logo{
+    color: var(--blanco);
+
+}
+.logo_nombre{
+    font-weight: 400;
+}
+.logo_bold {
+    font-weight: 700;
+}
+.header_titulo {
+    text-align: center;
+    color: var(--blanco);
+    margin-top: 8rem;
+}
+/* Titulo */
+@media (min-width: 768px) {
+    .header_texto {
+        margin-top: 15rem;
+    }
+}
+.barra {
+    padding-top: 4rem;
+}
+
+@media (min-width: 768px) {
+    .barra {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* Seach bar*/
+.searchBar{
+    position: relative;
+}
+.searchBar_input{
+    position: relative;
+    width: 165%;
+    height: 4.2rem;
+    display: block;
+    border: 0.2rem solid var(--colorBorderInputs);
+    color: var(--negro);
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    padding: 1rem 1.2rem;
+
+    outline: none;
+    box-shadow: 0 1rem 1rem -8px rgba(0 ,0 ,0 ,0.10);
+    background: 0 0;
+    background-color: var(--fondoForm);
+    /* line-height: 2.1rem;
+    z-index: 1; */
+}
+.searchBar_input:focus{
+    border:  0.2rem solid var(--negro);
+}
+.searchBar_label{
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    z-index: 1;
+    color: var(--colorCompany);
+    transition: all 300ms ease-in-out;
+    pointer-events: none;
+}
+.searchBar_input:focus~label,
+.searchBar_input:not(:placeholder-shown)~label{
+    /* top: -2rem; */
+    left: -7rem;
+    z-index: 1;
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--blanco);
+}
+.searchBar_input::-webkit-input-placeholder{
+    color: transparent;
+}
+.searchBar_input::-moz-placeholder{
+    color: transparent;
+}
+
+/* Navegacion */
+@media (min-width: 768px) {
+    .navegacion {
+        display: flex;
+        gap: 6rem;
+    }
+}
+.navegacion_enlace {
+    display: block;
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--blanco);
+    /* border-radius: 1rem;
+    padding: 1rem 1rem; */
+    font-weight: bold;
+    /* margin: 1.5em; */
+
+    &:hover{
+        background-color: var(--blanco);
+        color: var(--negro);
+        padding: 0.7rem 0.7rem; 
+        border-radius: 0.5rem;
+    }
+}
+
+
+/* Carrusel */ 
+
+.slider-box {
+    /* display: flex;
+    width: 100%; */
+    /* height: 100vh; */
+    /* overflow-x: scroll; */
+    width: 128rem;
+    height: 50rem;
+    overflow: hidden;
+
+    /* margin: 5rem auto 0; */
+}
+.header-homePage ul{
+    display: flex;
+    padding: 0;
+    width: 400%;
+    animation: slide 20s infinite alternate ease-in-out;
+}
+.header-homePage li {
+    width: 100%;
+    list-style: none;
+    position: relative;
+}
+img{
+    
+    width: 100%;
+    object-fit: cover;
+    /* height: 50rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; */
+}
+@keyframes slide {
+    0% {margin-left: 0;}
+    20% {margin-left: 0;}
+
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+}
+
+
+@media(max-width: 991px){
+    .slider-box {
+        width: 100%
+    }
+}
+
+
+/* Contenedor de Cards */
+.cards-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* Card */
+.card-container{
+    margin: 10px;
+    /* background-color: var(--texas); */
+    background: linear-gradient(var(--colorSecondary), var(--colorBorderInputs));
+    
+    border-radius: 0px 20px 0px 20px;
+    padding: 12px;
+    position: relative;
+    width: 350px;
+}
+
+.card-button{
+    background-color: var(--colorSecondary);
+    font-weight: 200;
+    cursor: pointer;
+}
+
+.card-image{
+    position: relative;
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+}
+
+.card-datos{
+    font-size: 15px;
+    display: flex;
+    gap: 2px;
+}
+
+.card-datos h3 {
+    font-weight: bold;
+    color: darkblue;
+}
+
+.card-datos span {
+    color: var(--negro);
+}

@@ -1,18 +1,14 @@
 import { useNavigate, Link } from "react-router-dom";
 
-import Culture from "../components/Activities/Culture";
+import "../../css/detailActivities.css"
 
-import "../css/detailActivities.css";
-import "../css/homePage.css";
-
-const DetailPage = () => {
+const Culture = () => {
   return (
     <div>
       {/* Header */}
-      <header className="header-homePage">
+      <header className="header-culture">
         <div className="contenedor">
           <div className=" barra">
-    
             {/* Logo */}
             <Link className="logo" to={"/"}>
               <h4 className="logo_nombre no-margin">Viajes</h4>
@@ -64,7 +60,7 @@ const DetailPage = () => {
          {/* Activities - Options */}
          <div className="opciones">
               <Link className="option_enlace" to={"/culture"}>
-                <Culture />
+                Cultura
               </Link>
               <Link className="option_enlace" to={"/gastronomy"}>
                 Gastronomia
@@ -76,10 +72,12 @@ const DetailPage = () => {
                 Deporte
               </Link>
             </div>
-        <Cards countries={countries} onClose={onClose} />
+        
+
+        <h2>Estas en Cultura</h2>
       </main>
     </div>
   );
 };
 
-export default DetailPage;
+export default Culture;

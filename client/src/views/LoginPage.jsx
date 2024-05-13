@@ -1,3 +1,5 @@
+// UseState
+import { useState, useEffect } from 'react'
 import { useNavigate, Link} from 'react-router-dom';
 
 import "../css/index.css";
@@ -5,7 +7,7 @@ import "../css/loginPage.css";
 
 import Login from '../components/auth/Login.jsx';
 
-const LoginPage = () => {
+const LoginPage = ({login}) => {
   return (
     <>
         {/* Header */}
@@ -31,7 +33,7 @@ const LoginPage = () => {
         <main className='contenido_principal'>
             
             {/* Log in */}
-            <Login/>
+            <Login login={login}/>
 
             
         </main>
