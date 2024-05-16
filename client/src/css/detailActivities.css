@@ -173,50 +173,14 @@ img{
     }
 }
 
-
-/* Contenedor de Cards */
-.cards-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-/* Card */
-.card-container{
-    margin: 10px;
-    /* background-color: var(--texas); */
-    background: linear-gradient(var(--colorSecondary), var(--colorBorderInputs));
-    
-    border-radius: 0px 20px 0px 20px;
-    padding: 12px;
-    position: relative;
-    width: 350px;
-}
-
-.card-button{
-    background-color: var(--colorSecondary);
-    font-weight: 200;
-    cursor: pointer;
-}
-
-.card-image{
-    position: relative;
-    width: 100%;
-    max-height: 320px;
-    overflow: hidden;
-}
-
-.card-datos{
-    font-size: 15px;
-    display: flex;
-    gap: 2px;
-}
-
-.card-datos h3 {
+/* detailPage */
+.search-button{
     font-weight: bold;
-    color: darkblue;
-}
-
-.card-datos span {
-    color: var(--negro);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,143,38,1) 0%, rgba(150,126,197,1) 48%, rgba(0,255,222,1) 100%);
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 5px;
+    cursor: pointer;
 }

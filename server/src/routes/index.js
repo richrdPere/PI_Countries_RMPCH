@@ -5,8 +5,8 @@ const router = Router();
 const { getCountries } = require('../controllers/getCountries');
 const { getCountriesByIdPais } = require('../controllers/getCountriesByIdPais');
 const { getCountriesByName } = require('../controllers/getCountriesByName');
-const { getActivities } = require('../controllers/getActivities');
-const { postActivities } = require('../controllers/postActivities');
+const { getActivity } = require('../controllers/getActivity');
+const { postActivity } = require('../controllers/postActivitiy');
 
 
 // -------------------------
@@ -25,14 +25,14 @@ router.get('/countries/:cca3', getCountriesByIdPais);
 router.get('/name', getCountriesByName); // Falta
 
 // ------------------------------
-// 4.- POST| /activities
+// 4.- GET| /activities
 // ------------------------------
-router.post('/activities', postActivities); // Falta
+router.get('/activities', getActivity); 
 
 // ------------------------------
-// 5.- GET| /activities
+// 5.- POST| /activities
 // ------------------------------
-router.get('/activities', getActivities) // Falta
+router.post('/activities', postActivity);
 
 
 module.exports = router;

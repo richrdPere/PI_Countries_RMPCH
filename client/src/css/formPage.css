@@ -1,4 +1,4 @@
-/* Home Page */
+/* Form Page */
 .header-homePage{
     background-color: var(--negro);
     background-image: url("../../public/img/img_font2.webp");
@@ -302,4 +302,73 @@ img{
     margin-top: 50px;
     display: flex;
     justify-content: center;
+}
+
+/* Extras */
+.search-container{
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,143,38,1) 0%, rgba(150,126,197,1) 48%, rgba(0,255,222,1) 100%);
+    display: flex;
+    justify-content: center;
+}
+.search-label{
+    font-weight: bold;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,143,38,1) 0%, rgba(150,126,197,1) 48%, rgba(0,255,222,1) 100%);
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.search-input{
+    font-weight: bold; 
+    color: orange; 
+}
+.search-select{
+    font-weight: bold; 
+    color: orange; 
+}
+.search-option{
+    font-weight: bold; 
+    color: orange;
+}
+.search-button{
+    font-weight: bold;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,143,38,1) 0%, rgba(150,126,197,1) 48%, rgba(0,255,222,1) 100%);
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+/* Form */
+
+.form-field{
+    padding: 10px;
+    margin-bottom: 15px;
+    color: darkblue;
+}
+.form-checkbox{
+    display: block;
+    margin-bottom: 5px;
+}
+.form-countryCheckWrapper{
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 10px;
+}
+.form-error{
+    color: red;
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* O la altura que desees */
 }

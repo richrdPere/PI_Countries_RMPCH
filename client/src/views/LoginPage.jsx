@@ -8,39 +8,63 @@ import "../css/loginPage.css";
 import Login from '../components/auth/Login.jsx';
 
 const LoginPage = ({login}) => {
-  return (
-    <>
-        {/* Header */}
-        <header className="headerLogin">
-            <div className="contenedor">
-                <div className="barra">
-                    {/* Logo */}
-                    <Link className="logo" to={'/'}>
-                            <h1 className="logo_nombre no-margin">Viajes<span className="logo_bold">AlExtranjero</span></h1>
-                        </Link>
+    // NAVEGACIÓN
+    // Obtener la función de navegación
+    const navigate = useNavigate();
 
-                    {/* Navegacion */}
-                    <div className="navegacion">
-                        <Link className="navegacion_enlace">Nosotros</Link>
-                        <Link className="navegacion_enlace" to={'/register'}>Sign up</Link>
-                        <Link className="navegacion_enlace" to={'/login'}>Log in</Link>
-                    </div>   
+    // Redireccionar a ciertas Page
+
+    // 1.-Nav - Hacia nosotros
+    // ----------------------------
+    const handleEnterToNosotros = () => {
+        navigate('/about'); // Redirige a la ruta '/about'
+    }
+
+    // 2.-Nav - Hacia Log in
+    // ----------------------------
+    const handleEnterToLogin = () => {
+        navigate('/login'); // Redirige a la ruta '/login'
+    }
+
+    // 3.-Nav - Hacia Sign up
+    // ----------------------------
+    const handleEnterToRegister = () => {
+        navigate('/register'); // Redirige a la ruta '/register'
+    }
+
+    return (
+        <>
+            {/* Header */}
+            <header className="headerLogin">
+                <div className="contenedor">
+                    <div className="barra">
+                        {/* Logo */}
+                        <Link className="logo" to={'/'}>
+                                <h1 className="logo_nombre no-margin">Viajes<span className="logo_bold">AlExtranjero</span></h1>
+                            </Link>
+
+                        {/* Navegacion */}
+                        <div className="navegacion">
+                            <a className="navegacion_enlace" onClick={handleEnterToNosotros}>Nosotros</a>
+                            <a className="navegacion_enlace" onClick={handleEnterToRegister}>Sign up</a>
+                            <a className="navegacion_enlace" onClick={handleEnterToLogin}>Log in</a>
+                        </div>   
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
 
-        {/* Contenido Principal */}
-        <main className='contenido_principal'>
-            
-            {/* Log in */}
-            <Login login={login}/>
+            {/* Contenido Principal */}
+            <main className='contenido_principal'>
+                
+                {/* Log in */}
+                <Login login={login}/>
 
+                
+            </main>
             
-        </main>
-        
-        
-    </>
-  )
+            
+        </>
+    )
 }
 
 export default LoginPage;

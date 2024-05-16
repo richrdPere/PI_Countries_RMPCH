@@ -1,6 +1,6 @@
 const { Country, Activity } = require("../db");
 
-exports.postActivities = async (req, res) => {
+exports.postActivity = async (req, res) => {
 
     // Obtenemos los datos del Body dentro de la solicitud
     const { name, difficulty, duration, season, countries } = req.body;

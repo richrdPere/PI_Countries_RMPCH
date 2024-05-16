@@ -12,6 +12,6 @@ server.use(express.json());
 server.use(cors());
 
 // Ruta principal
-server.use(router);
+server.use('/',router);
 
 module.exports = server;

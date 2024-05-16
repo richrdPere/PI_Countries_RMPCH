@@ -2,6 +2,28 @@ import { useNavigate, Link} from 'react-router-dom';
 import "../../css/loginPage.css";
 
 const Registro = () => {
+    // NAVEGACIÓN
+    // Obtener la función de navegación
+    const navigate = useNavigate();
+
+    // Redireccionar a ciertas Page
+    // 1.-Nav - Hacia nosotros
+    // ----------------------------
+    const handleEnterToNosotros = () => {
+        navigate('/about'); // Redirige a la ruta '/about'
+    }
+
+    // 2.-Nav - Hacia Log in
+    // ----------------------------
+    const handleEnterToLogin = () => {
+        navigate('/login'); // Redirige a la ruta '/login'
+    }
+
+    // 3.-Nav - Hacia Sign up
+    // ----------------------------
+    const handleEnterToRegister = () => {
+        navigate('/register'); // Redirige a la ruta '/register'
+    }
 
     return (
         <>
@@ -16,9 +38,9 @@ const Registro = () => {
 
                         {/* Navegacion */}
                         <div className="navegacion">
-                            <Link className="navegacion_enlace">Nosotros</Link>
-                            <Link className="navegacion_enlace" to={'/register'}>Sign up</Link>
-                            <Link className="navegacion_enlace" to={'/login'}>Log in</Link>
+                        <a className="navegacion_enlace" onClick={handleEnterToNosotros}>Nosotros</a>
+                            <a className="navegacion_enlace" onClick={handleEnterToRegister}>Sign up</a>
+                            <a className="navegacion_enlace" onClick={handleEnterToLogin}>Log in</a>
                         </div>   
                     </div>
                 </div>

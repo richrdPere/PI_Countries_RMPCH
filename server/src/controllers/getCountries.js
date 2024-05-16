@@ -15,26 +15,6 @@ exports.getCountries = async (req, res) => {
             return res.status(200).json(countries);
         }
         return res.status(404).json({ error: "No encontrado" });
-      
-      //#region 
-      // const dataCountries = jsonCountries.countries;
-
-      // if(dataCountries){
-        
-
-      //   // Pasar los eleemtos del objeto al array a partir de las claves
-      //   Object.keys(dataCountries).forEach(clave => {
-      //     countriesArray.push(dataCountries[clave]);
-      //   })
-    
-        
-      //   // Devolver el array
-      //   return res.status(200).json(countriesArray);
-      
-      // };
-
-      // return res.status(404).json({ error: "Not found" });
-      //#endregion
 
     } catch (error) {
         console.error('Error fetching countries:', error);

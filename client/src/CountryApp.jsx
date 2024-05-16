@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react'
 
 // Librerias
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom";
+
 
 // Vistas (Views)
 import DetailPage from "./views/DetailPage.jsx";
@@ -14,9 +14,10 @@ import LoginPage from './views/LoginPage.jsx';
 
 // Components
 import Registro from "./components/auth/Registro.jsx";
+import Nosotros from './components/auth/Nosotros.jsx';
 
 
-function App() {
+function CountryApp() {
     // Use States
     const [countries, setCountries] = useState([]);
     const [isAuth, setIsAuth] = useState(false);
@@ -86,6 +87,7 @@ function App() {
             {/* ================================= */}
 
             {/* 1.-Ruta Principal - LadingPage */}
+            {/* Ruta para la página de inicio */}
             <Route path="/" element={
                 <>
                     <LadingPage/>
@@ -93,21 +95,24 @@ function App() {
             }></Route>
 
             {/* 2.-Ruta Acti. Turistica - FormPage */}
-            <Route path="/formPage" element={
+            {/* Ruta para el forumalrio */}
+            <Route path="/form" element={
                 <>
                     <FormPage/>
                 </>
             }></Route>
 
             {/* 3.-Ruta SPA - HomePage */}
+            {/* Ruta para la página principal */}
             <Route path="/homePage" element={
                 <>
-                    <HomePage countries={countries} onClose={onClose}/>
+                    <HomePage/>
                 </>
             }></Route>
 
             {/* 4.-Ruta info especifica - DetailPage */}
-            <Route path="/homePage/detailPage" element={
+            {/* Ruta para el detalle de país */}
+            <Route path="/countries/:cca3" element={
                 <>
                     <DetailPage/>
                 </>
@@ -132,6 +137,17 @@ function App() {
                     <Registro/>
                 </>
             }></Route>
+
+            {/* 7.-Ruta Nosotros */}
+            <Route path="/about" element={
+                <>
+                    <Nosotros/>
+                </>
+            }></Route>
+
+            <Route path="/redirect" element={
+                <Navigate to="/HomePage" />} 
+            /> {/* Redirige a /HomePage */}
         </Routes>
 
 
@@ -140,4 +156,4 @@ function App() {
     )
 }
 
-export default App
+export default CountryApp

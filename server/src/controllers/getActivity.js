@@ -1,7 +1,7 @@
 // Importa los modelos Activity, Country, y Tour
 const { Activity, Country } = require('../db');
 
-exports.getActivities = async (req, res) => {
+exports.getActivity = async (req, res) => {
     
     try {
        // Obtenemos todas las actividades turísticas desde la base de datos

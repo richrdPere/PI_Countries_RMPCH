@@ -26,7 +26,8 @@ exports.getCountriesByIdPais = async (req, res) => {
         }
 
     } catch (error) {
-      return res.status(500).json(error.message);
+        console.error('Error fetching country:', error);
+        return res.status(500).json(error.message);
     }
 };
 

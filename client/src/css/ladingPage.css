@@ -24,6 +24,9 @@
     color: var(--blanco);
     margin-top: 8rem;
 }
+.header-normal{
+    font-weight: lighter;
+}
 /* Titulo */
 @media (min-width: 768px) {
     .header_texto {
@@ -58,11 +61,13 @@
     padding: 1rem 1rem; */
     font-weight: bold;
     /* margin: 1.5em; */
+    background-color: transparent;
 
     &:hover{
         background-color: var(--blanco);
         color: var(--negro);
         padding: 0.7rem 0.7rem; 
         border-radius: 0.5rem;
+        cursor: pointer;
     }
 }

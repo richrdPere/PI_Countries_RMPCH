@@ -11,9 +11,7 @@ const Login = ({login}) => {
         password: ""
     });
 
-    //const [errors, setErrors] = useState({});
-
-
+    // FUNCIONES
     // 1.-Funcion - handlerChange
     // ----------------------------
     const handlerChange = (event) => {
@@ -27,8 +25,6 @@ const Login = ({login}) => {
         e.preventDefault();
         login(userData)
     }
-
-
 
     return (
         <>

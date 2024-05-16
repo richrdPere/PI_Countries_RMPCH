@@ -1,16 +1,15 @@
+
+import React from 'react'
 import { useNavigate, Link} from 'react-router-dom';
+import "../../css/loginPage.css";
 
-//import "../css/index.css";
-import "../css/ladingPage.css";
 
-const LadingPage = () => {
-
-    // NAVEGACIÓN
+const Nosotros = () => {
+  // NAVEGACIÓN
     // Obtener la función de navegación
     const navigate = useNavigate();
 
     // Redireccionar a ciertas Page
-
     // 1.-Nav - Hacia nosotros
     // ----------------------------
     const handleEnterToNosotros = () => {
@@ -28,38 +27,38 @@ const LadingPage = () => {
     const handleEnterToRegister = () => {
         navigate('/register'); // Redirige a la ruta '/register'
     }
-    
+
     return (
         <>
             {/* Header */}
-            <header className="header">
+            <header className="headerLogin">
                 <div className="contenedor">
                     <div className="barra">
                         {/* Logo */}
                         <Link className="logo" to={'/'}>
-                            <h1 className="logo_nombre no-margin">Viajes<span className="logo_bold">AlExtranjero</span></h1>
-                        </Link>
+                                <h1 className="logo_nombre no-margin">Viajes<span className="logo_bold">AlExtranjero</span></h1>
+                            </Link>
 
                         {/* Navegacion */}
                         <div className="navegacion">
-                            <a className="navegacion_enlace" onClick={handleEnterToNosotros}>Nosotros</a>
+                        <a className="navegacion_enlace" onClick={handleEnterToNosotros}>Nosotros</a>
                             <a className="navegacion_enlace" onClick={handleEnterToRegister}>Sign up</a>
                             <a className="navegacion_enlace" onClick={handleEnterToLogin}>Log in</a>
                         </div>   
                     </div>
                 </div>
-
-                <div className="header_titulo ">
-                    {/* Titulo */}
-                    <h1 className="no-margin"><span className='header-normal'>Bienvenido a Viajes</span>AlExtranjero</h1>
-                    
-                    <p className="no-margin">Recuerdos de viaje que nunca olvidarás</p>
-                </div>
             </header>
-            
-            {/* Header */}
+
+            <main className='contenido_principal'>
+                {/* Titulo */}
+                <h2>Sobre el Creador</h2>
+
+
+                
+            </main>
         </>
-    )
+        
+    );
 }
 
-export default LadingPage;
+export default Nosotros

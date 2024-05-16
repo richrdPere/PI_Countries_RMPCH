@@ -9,6 +9,8 @@ exports.getCountriesByName = async (req, res) => {
         // Recuperamos el nombre por Query
         const { nameQuery } = req.query.name;
 
+        //console.log(nameQuery);
+
         // Validar si existe un nombre
         if (!nameQuery) {
             return res.status(400).json({ error: 'Debe proporcionar el nombre de país...' });
@@ -25,9 +27,9 @@ exports.getCountriesByName = async (req, res) => {
             return res.status(404).json({ message: 'País no registrado en la Base de Datos...' });
         }
       
-        return res.json(countries);
+        res.json(countries);
             
     } catch (error) {
-        return res.status(500).json(error.message);
+        res.status(500).json(error.message);
     }
 };
