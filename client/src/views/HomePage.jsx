@@ -83,8 +83,8 @@ const HomePage = () => {
     };
 
     // Manejador para buscar países por nombre
-    const handleSearch = (nameCountry) => {
-        dispatch(searchCountriesByName(nameCountry));
+    const handleSearch = (name) => {
+        dispatch(searchCountriesByName(name));
         setSelectedContinent(null);
         setSelectedActivity(null);
         setCurrentPage(1); // Reiniciar a la página 1 cuando se busque un país

@@ -2,6 +2,7 @@ import { useNavigate, Link} from 'react-router-dom';
 
 //import "../css/index.css";
 import "../css/ladingPage.css";
+import Nosotros from '../components/auth/Nosotros';
 
 const LadingPage = () => {
 
@@ -13,9 +14,9 @@ const LadingPage = () => {
 
     // 1.-Nav - Hacia nosotros
     // ----------------------------
-    const handleEnterToNosotros = () => {
-        navigate('/about'); // Redirige a la ruta '/about'
-    }
+    // const handleEnterToNosotros = () => {
+    //     navigate('/about'); // Redirige a la ruta '/about'
+    // }
 
     // 2.-Nav - Hacia Log in
     // ----------------------------
@@ -42,22 +43,24 @@ const LadingPage = () => {
 
                         {/* Navegacion */}
                         <div className="navegacion">
-                            <a className="navegacion_enlace" onClick={handleEnterToNosotros}>Nosotros</a>
-                            <a className="navegacion_enlace" onClick={handleEnterToRegister}>Sign up</a>
-                            <a className="navegacion_enlace" onClick={handleEnterToLogin}>Log in</a>
+                            <a className="navegacion_enlace" onClick={handleEnterToRegister}>Registrate</a>
+                            <a className="navegacion_enlace" onClick={handleEnterToLogin}>Iniciar Sesión</a>
                         </div>   
                     </div>
                 </div>
 
                 <div className="header_titulo ">
                     {/* Titulo */}
-                    <h1 className="no-margin"><span className='header-normal'>Bienvenido a Viajes</span>AlExtranjero</h1>
+                    <h1 className="no-margin header-normal">Bienvenido a Viajes<span className='logo_bold header-normal'>AlExtranjero</span></h1>
                     
                     <p className="no-margin">Recuerdos de viaje que nunca olvidarás</p>
                 </div>
             </header>
             
-            {/* Header */}
+            {/* Main - Sobre Mí  */}
+            <main className='layout__content'>
+                <Nosotros/>
+            </main>
         </>
     )
 }

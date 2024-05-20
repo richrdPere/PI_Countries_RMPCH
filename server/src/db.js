@@ -34,9 +34,13 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 // Variable entre Modelos 
-const { Country, Activity } = sequelize.models;
+const { Country, Activity, User } = sequelize.models;
 
-// Relación entre Modelos
+// Relación entre Modelos - User_Country
+User.belongsToMany(Country, { through: 'User_Country' });
+Country.belongsToMany(User, { through: 'User_Country' });
+
+// Relación entre Modelos - Tour
 Country.belongsToMany(Activity, {through: "Tour"});
 Activity.belongsToMany(Country, {through: "Tour"});
 
@@ -44,5 +48,6 @@ module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
   Country,             // para importa el modelo Country
-  Activity
+  Activity,
+  User
 };

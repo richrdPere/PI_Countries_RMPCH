@@ -253,14 +253,14 @@ const FormPage = () => {
                 <div className='form-field'>
                     <div className='search-label'>Dificultad:</div>
 
-                    <option className='search-option' value={difficulty} onChange={handleDifficultyChange}>
+                    <select className='search-option' value={difficulty} onChange={handleDifficultyChange}>
                         <option value="">Seleccione una dificultad</option>
                         <option value={1}>1</option>
                         <option value={2}>2</option>
                         <option value={3}>3</option>
                         <option value={4}>4</option>
                         <option value={5}>5</option>
-                    </option>
+                    </select>
 
                     <p className='form-error'>{difficultyError}</p>
                 </div>

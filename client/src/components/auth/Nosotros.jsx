@@ -1,64 +1,148 @@
-
-import React from 'react'
-import { useNavigate, Link} from 'react-router-dom';
-import "../../css/loginPage.css";
-
+import "../../css/ladingPage.css";
 
 const Nosotros = () => {
-  // NAVEGACIÓN
-    // Obtener la función de navegación
-    const navigate = useNavigate();
-
-    // Redireccionar a ciertas Page
-    // 1.-Nav - Hacia nosotros
-    // ----------------------------
-    const handleEnterToNosotros = () => {
-        navigate('/about'); // Redirige a la ruta '/about'
-    }
-
-    // 2.-Nav - Hacia Log in
-    // ----------------------------
-    const handleEnterToLogin = () => {
-        navigate('/login'); // Redirige a la ruta '/login'
-    }
-
-    // 3.-Nav - Hacia Sign up
-    // ----------------------------
-    const handleEnterToRegister = () => {
-        navigate('/register'); // Redirige a la ruta '/register'
-    }
 
     return (
-        <>
-            {/* Header */}
-            <header className="headerLogin">
-                <div className="contenedor">
-                    <div className="barra">
-                        {/* Logo */}
-                        <Link className="logo" to={'/'}>
-                                <h1 className="logo_nombre no-margin">Viajes<span className="logo_bold">AlExtranjero</span></h1>
-                            </Link>
-
-                        {/* Navegacion */}
-                        <div className="navegacion">
-                        <a className="navegacion_enlace" onClick={handleEnterToNosotros}>Nosotros</a>
-                            <a className="navegacion_enlace" onClick={handleEnterToRegister}>Sign up</a>
-                            <a className="navegacion_enlace" onClick={handleEnterToLogin}>Log in</a>
-                        </div>   
-                    </div>
-                </div>
+        <section className="content__page content__about no-margin">
+            {/* Titulo */}
+            <header className="about__header">
+                <h1 className="about__title">Sobre <span className="title__color">Mi</span></h1>
             </header>
 
-            <main className='contenido_principal'>
-                {/* Titulo */}
-                <h2>Sobre el Creador</h2>
+            {/* Información */}
+            <section className="about__personalInfo">
+                {/* Biografia */}
+                <article className="personalInfo__bio">
+                    <p className="personalInfo__description">
+                        Hola mucho gusto. Me presentó, soy Richard M. Pereira Chinchero,
+                        estudiante de programación en el desarrollo de Full Stack developer
+                        en Henry. Y te doy la bienvenido a mi Proyecto Integrador sobre
+                        Countries con el objetivo de poner a prueba mis habilidades de
+                        desarrollador web. Espero que sea de su agrado...
+                    </p>
+                </article>
 
+                {/* Datos */}
+                <div className="personalInfo__data">
+                    <ul className="personalInfo__list">
+                        {/* Edad */}
+                        <li className="personalInfo__option">
+                            <span className="personalInfo__title">Edad</span>
+                            <span className="personalInfo__value">24</span>
+                        </li>
+                        {/* Pais */}
+                        <li className="personalInfo__option">
+                            <span className="personalInfo__title">Pais</span>
+                            <span className="personalInfo__value">Perú</span>
+                        </li>
+                        {/* Direccion */}
+                        <li className="personalInfo__option">
+                            <span className="personalInfo__title">Dirección</span>
+                            <span className="personalInfo__value">
+                                av. Manahuañunca, A-2, Cusco{" "}
+                            </span>
+                        </li>
+                        {/* Correo */}
+                        <li className="personalInfo__option">
+                            <span className="personalInfo__title">Correo</span>
+                            <span className="personalInfo__value">
+                                richrdpere321@gmail.com
+                            </span>
+                        </li>
+                        {/* Telefono */}
+                        <li className="personalInfo__option">
+                            <span className="personalInfo__title">Teléfono</span>
+                            <span className="personalInfo__value">986-302860</span>
+                        </li>
+                    </ul>
+                </div>
+            </section> {/* Fin - Información */}
 
-                
-            </main>
-        </>
-        
+            {/* Tecnologias */}
+            <section>
+                <header className="services__header">
+                    <h2 className="services__title">Lo que <span className="title__color">hago</span></h2>
+                </header>
+
+                <div className="services__container">
+
+                        {/* 1er React */}
+                        <article className="services__service">
+                            {/* Img */}
+                            {/* <div className="service__img">
+                                <figure className="gallery__item">
+                                    <div className="gallery__containerImagen">
+                                        <a href="#">
+                                            <img className="gallery__image" src="img/tecnologias_logos/react_logo.png" alt="Servicio 1 " />
+                                        </a>                            
+                                    </div>
+                                </figure>
+                                
+                            </div> */}
+
+                            <div className="service__content">
+                                <h3 className="service__title">React</h3>
+                                <p className="service__description">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur minus enim, 
+                                    consectetur nesciunt iure sit sed dicta, autem eum quidem eveniet harum provident 
+                                    reprehenderit esse voluptas et sint recusandae architecto.
+                                </p>
+                            </div>
+                        </article>
+
+                        {/* 2do Redux */}
+                        <article className="services__service">
+                            <div className="service__img">
+                                <i className="service__realIcon fa-solid fa-chalkboard-teacher"></i>
+                            </div>
+
+                            <div className="service__content">
+                                <h3 className="service__title">Redux</h3>
+                                <p className="service__description">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur minus enim, 
+                                    consectetur nesciunt iure sit sed dicta, autem eum quidem eveniet harum provident 
+                                    reprehenderit esse voluptas et sint recusandae architecto.
+                                </p>
+                            </div>
+                        </article>
+
+                        {/* 3er Node */}
+                        <article className="services__service">
+                            <div className="service__img">
+                                <i className="service__realIcon fa-solid fa-computer"></i>
+                            </div>
+
+                            <div className="service__content">
+                                <h3 className="service__title">Node</h3>
+                                <p className="service__description">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur minus enim, 
+                                    consectetur nesciunt iure sit sed dicta, autem eum quidem eveniet harum provident 
+                                    reprehenderit esse voluptas et sint recusandae architecto.
+                                </p>
+                            </div>
+                        </article>
+
+                        {/* 4er PostgresSQL */}
+                        <article className="services__service">
+                            <div className="service__img">
+                                <i className="service__realIcon fa-solid fa-terminal"></i>
+                            </div>
+
+                            <div className="service__content">
+                                <h3 className="service__title">PostgresSQL</h3>
+                                <p className="service__description">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur minus enim, 
+                                    consectetur nesciunt iure sit sed dicta, autem eum quidem eveniet harum provident 
+                                    reprehenderit esse voluptas et sint recusandae architecto.
+                                </p>
+                            </div>
+                        </article>
+
+                </div>
+            </section> {/* Fin - Tecnologias */}
+
+        </section>
     );
-}
+};
 
-export default Nosotros
+export default Nosotros;

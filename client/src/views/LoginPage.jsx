@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link} from 'react-router-dom';
 
-import "../css/index.css";
 import "../css/loginPage.css";
 
 import Login from '../components/auth/Login.jsx';
@@ -14,19 +13,13 @@ const LoginPage = ({login}) => {
 
     // Redireccionar a ciertas Page
 
-    // 1.-Nav - Hacia nosotros
-    // ----------------------------
-    const handleEnterToNosotros = () => {
-        navigate('/about'); // Redirige a la ruta '/about'
-    }
-
-    // 2.-Nav - Hacia Log in
+    // 1.-Nav - Hacia Log in
     // ----------------------------
     const handleEnterToLogin = () => {
         navigate('/login'); // Redirige a la ruta '/login'
     }
 
-    // 3.-Nav - Hacia Sign up
+    // 2.-Nav - Hacia Sign up
     // ----------------------------
     const handleEnterToRegister = () => {
         navigate('/register'); // Redirige a la ruta '/register'
@@ -45,9 +38,8 @@ const LoginPage = ({login}) => {
 
                         {/* Navegacion */}
                         <div className="navegacion">
-                            <a className="navegacion_enlace" onClick={handleEnterToNosotros}>Nosotros</a>
-                            <a className="navegacion_enlace" onClick={handleEnterToRegister}>Sign up</a>
-                            <a className="navegacion_enlace" onClick={handleEnterToLogin}>Log in</a>
+                            <a className="navegacion_enlace" onClick={handleEnterToRegister}>Registarte</a>
+                            <a className="navegacion_enlace" onClick={handleEnterToLogin}>Iniciar Sesión</a>
                         </div>   
                     </div>
                 </div>

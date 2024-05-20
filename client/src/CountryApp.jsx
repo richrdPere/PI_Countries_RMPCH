@@ -31,12 +31,12 @@ function CountryApp() {
     // -------------------
     const login = async (userData) => {
         try {
-            const { email, password } = userData;
-            const URL = 'http://localhost:5000/countries/login/';
-            const { data } = await axios(URL + `?email=${email}&password=${password}`)
+            // const { email, password } = userData;
+            // const URL = 'http://localhost:5000/countries/login/';
+            // const { data } = await axios(URL + `?email=${email}&password=${password}`)
 
-            setAccess(data.isAuth);
-            isAuth && navigate('/homePage');
+            // setAccess(data.isAuth);
+            // isAuth && navigate('/homePage');
 
         }
         catch (error){

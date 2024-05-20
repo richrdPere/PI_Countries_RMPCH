@@ -7,19 +7,20 @@ exports.getCountriesByName = async (req, res) => {
     try {
 
         // Recuperamos el nombre por Query
-        const { nameQuery } = req.query.name;
+        const { name } = req.query;
 
-        //console.log(nameQuery);
+        //console.log(name);
 
+         
         // Validar si existe un nombre
-        if (!nameQuery) {
+        if (!name) {
             return res.status(400).json({ error: 'Debe proporcionar el nombre de país...' });
         }
 
         // Obtenemos todos los paises que coinciden con el nombre recibido por query
         const countries = await Country.findAll({
             where: Sequelize.where(
-                Sequelize.fn('LOWER', Sequelize.col('name')), 'LIKE', `%${nameQuery.toLowerCase()}%`
+                Sequelize.fn('LOWER', Sequelize.col('name')), 'LIKE', `%${name.toLowerCase()}%`
             ),
         });
       
@@ -30,6 +31,7 @@ exports.getCountriesByName = async (req, res) => {
         res.json(countries);
             
     } catch (error) {
+        console.error('Error al obtener los países:', error);
         res.status(500).json(error.message);
     }
 };
