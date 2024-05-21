@@ -33,8 +33,8 @@ const LoginPage = ({login}) => {
                     <div className="barra">
                         {/* Logo */}
                         <Link className="logo" to={'/'}>
-                                <h1 className="logo_nombre no-margin">Viajes<span className="logo_bold">AlExtranjero</span></h1>
-                            </Link>
+                            <h1 className="logo_nombre no-margin">Viajes<span className="logo_bold">AlExtranjero</span></h1>
+                        </Link>
 
                         {/* Navegacion */}
                         <div className="navegacion">

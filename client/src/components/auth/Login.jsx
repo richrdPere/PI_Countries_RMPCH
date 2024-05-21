@@ -27,43 +27,33 @@ const Login = ({login}) => {
 
     return (
         <>
+            {/* Titulo */}
+            <h2 className='centrar-texto'>Inicia Sesión <span className="logo_bold">con tu Cuenta</span></h2>
+
             {/* Log in */}
-            <div className='login-box'>    
-                {/* Titulo */}
-                <h2>Iniciar Sesión</h2>
-
-                {/* Log in */}
-                <form onSubmit={handlerSubmit}>
-
+            <form className='form__container login__space' onSubmit={handlerSubmit}>
+                {/* Datos de la Cuenta */}
+                <section className='form__top'>
                     {/* Email */}
-                    <div className='user-box'>
-                        <input type="email" name="email" onChange={handlerChange}/>
-                        <label>Email</label>
+                    <div className='form__group'>
+                        <input className="form__input" onChange={handlerChange} id='email' placeholder="Email" type="email" name="email"/>
+                        <label className="form__label" htmlFor="email">Email</label>
                     </div>
-                                
-                    {/* Password */}
-                    <div className='user-box'>
-                        <input  type="password" name="password" onChange={handlerChange}/>
-                        <label>Password</label>
-                    </div>
-                            
-                    {/* Extra options */}
-                    {/* <div className='options-login'>
-                        <Link className="option_link" to={'/register'}>¿No tienes cuenta? Crea Una</Link>
-                        <Link className="option_link" to={'/forgotPassword'}>Olvide mi Password</Link>
-                    </div> */}
 
-                    {/* Submit */}
-                    <Link to={'/homePage'}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Submit
-                    </Link>
-                </form>
-            </div>
-            
+                    {/* Password */}
+                    <div className='form__group'>
+                        <input className="form__input" onChange={handlerChange} placeholder="Password" type="password" name="password"/>
+                        <label className="form__label" htmlFor="password">Password</label>
+                    </div>    
+
+                    {/* Button */}
+                    <div className="form__center">
+                        <Link to={'/homePage'}>
+                            <input type="submit" className='form__button' value="Iniciar Sesión"/> 
+                        </Link>
+                    </div>
+                </section>
+            </form>    
         </>
     );
 }

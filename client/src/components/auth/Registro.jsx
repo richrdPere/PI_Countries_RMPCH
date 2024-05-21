@@ -40,27 +40,78 @@ const Registro = () => {
 
             <main className='contenido_principal'>
                 {/* Titulo */}
-                <h2>Crear Cuenta</h2>
+                <h2 className='centrar-texto'>Create <span className="logo_bold">una Cuenta</span></h2>
 
 
-                {/* Log in */}
-                <form>
-                    {/* Email */}
-                    <label htmlFor="email">Email</label>
-                    <input id='email' placeholder="Tu Email" type="email" name="email" className='email_input'/>
+                {/* Registro */}
+                <form className='form__container'>
+                    {/* Datos de la Cuenta */}
+                    <section className='form__top'>
 
-                    {/* Password */}
-                    <label htmlFor="password">Password</label>
-                    <input placeholder="Tu Password" type="password" name="password" className='password_input'/>
+                        <h4>Datos de la Cuenta</h4>
 
-                    {/* Extra options */}
-                    <div className='options_login'>
-                        <Link className="option_link" to={'/register'}>¿No tienes cuenta? Crea Una</Link>
-                        <Link className="option_link" to={'/forgotPassword'}>Olvide mi Password</Link>
-                    </div>
+                        {/* Email */}
+                        <div className='form__group'>
+                            <input className="form__input" id='email' placeholder="Email" type="email" name="email"/>
+                            <label className="form__label" htmlFor="email">Email</label>
+                        </div>
+                        
+                        {/* Password */}
+                        <div className='form__group'>
+                            <input className="form__input" placeholder="Password" type="password" name="password"/>
+                            <label className="form__label" htmlFor="password">Password</label>
+                        </div>      
+                    </section>
+                    
 
-                    {/* Button */}
-                    <input type="submit" value="Iniciar Sesion" className='button_submit'/>
+                    {/* Datos del Usuario */}
+                    <section className='form__bottom'>
+                        
+                        <h4>Datos del Usuario</h4>
+
+                        <div className='form__name'>
+                            {/* Nombres */}
+                            <div className='form__group'>
+                                <input className="form__input" id='name' placeholder="Nombres" type="text" name="name"/>
+                                <label className="form__label" htmlFor="name">Nombres</label>
+                            </div>
+
+                            {/* Apellidos */}
+                            <div className='form__country form__group'>
+                                <input className="form__input" id='lastName' placeholder="Apellidos" type="text" name="lastName"/>
+                                <label className="form__label" htmlFor="lastName">Apellidos</label>
+                            </div>
+                        </div>
+                        
+                        <div className='form__country'>
+                            {/* Pais */}
+                            <div className='form__group'>
+                                <input className="form__input" id='country' placeholder="País" type="text" name="country"/>
+                                <label className="form__label" htmlFor="country">País</label>
+                            </div>
+
+                            {/* Continente */}
+                            <div className='form__group'>
+                                {/* <label className="" htmlFor="continent">Continente</label> */}
+                                <select className="form__select" id='continent' name="continent">
+                                    <option>Continente</option>
+                                    <option value="Africa">Africa</option>
+                                    <option value="South America">South America</option>
+                                    <option value="Asia">Asia</option>
+                                    <option value="Europe">Europe</option>
+                                    <option value="Oceania">Oceania</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        {/* Button */}
+                        <div className='form__center'>
+                            <input type="submit" className='form__button' value="Crear Cuenta"/>
+                        </div>
+                        
+                    </section>
+
+                    
                 </form>
             </main>
         </>

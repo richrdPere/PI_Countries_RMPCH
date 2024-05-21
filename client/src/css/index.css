@@ -8,8 +8,9 @@
   --negro: #000000;
   --celeste: #04B4E0;
 
-  --fondoForm: #e1e1e1;
+  --fondoForm: #f5f5f5;
   --fondoPrincipal: #243b55;
+  --colorText: #A5A6A7;
 
   --colorBorderReviews: #E5E6E7;
   --colorBorderInputs: #222222;
@@ -75,4 +76,18 @@ img {
 .centrar-texto {
   text-align: center;
 }
-
+/* Logo */
+.logo {
+  color: var(--blanco);
+}
+.logo_nombre {
+  font-weight: 400;
+}
+.logo_bold {
+  font-weight: 700;
+}
+.header_titulo {
+  text-align: center;
+  color: var(--blanco);
+  margin-top: 8rem;
+}

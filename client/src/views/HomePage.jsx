@@ -109,44 +109,57 @@ const HomePage = () => {
         setCurrentPage(1); // Reiniciar a la página 1 cuando se aplique un filtro
     };
 
+    // NAVEGACIÓN
+    // Obtener la función de navegación
+    const navigate = useNavigate();
+
+    // 1.-Nav - Hacia Activities
+    // ----------------------------
+    const handleEnterToActivities = () => {
+        navigate('/form'); // Redirige a la ruta '/login'
+    }
+
+    // 2.-Nav - Hacia Login
+    // ----------------------------
+    const handleEnterToLogin = () => {
+        navigate('/login'); // Redirige a la ruta '/register'
+    }
+
 
     return (
         <>
             {/* Header */}
             <header className="header-homePage">
                 <div className="contenedor">
-                <div className=" barra">
-                    
-                    {/* Logo */}
-                    <Link className="logo" to={"/"}>
-                    <h4 className="logo_nombre no-margin">
-                        Viajes
-                    </h4>
-                    <h4 className="logo_nombre no-margin"><span className="logo_bold">AlExtranjero</span></h4>
-                    </Link>
+                    <div className=" barra">
+                        
+                        {/* Logo */}
+                        <Link className="logo" to={"/homePage"}>
+                        <h4 className="logo_nombre no-margin">
+                            Viajes
+                        </h4>
+                            <h4 className="logo_nombre no-margin"><span className="logo_bold">AlExtranjero</span></h4>
+                        </Link>
 
-                    {/* Seach bar */}
-                    <div className="searchBar">
-                        <input type="text" className="searchBar_input" name="name" placeholder="Nombre" required/>
-                        <label htmlFor="name" className="searchBar_label">
-                            {/* <FontAwesomeIcon icon="fa-solid fa-house" /> */}
-                            Buscar
-                        </label>
-                    </div>
+                        {/* Seach bar */}
+                        <div className="searchBar">
 
-                    {/* Navegacion */}
-                    <div className="navegacion">
-                    <Link href="#" className="navegacion_enlace">
-                        Nosotros
-                    </Link>
-                    <Link href="#" className="navegacion_enlace" to={"/register"}>
-                        Sign up
-                    </Link>
-                    <Link href="#" className="navegacion_enlace" to={"/login"}>
-                        Log in
-                    </Link>
+                            {/* <input type="text" className="searchBar_input" name="name" placeholder="Nombre" required/>
+
+                            <label htmlFor="name" className="searchBar_label">
+                                
+                                Buscar
+                            </label> */}
+
+                            <SearchBar onSearch={handleSearch} onClearSearch={handleClearSearch} />
+                        </div>
+
+                        {/* Navegacion */}
+                        <div className="navegacion">
+                            <a className="navegacion_enlace" onClick={handleEnterToActivities}>Mis Actividades</a>
+                            <a className="navegacion_enlace" onClick={handleEnterToLogin}>Cerrar Sesión</a>
+                        </div>   
                     </div>
-                </div>
                 </div>
 
                 <div className="header_titulo ">
@@ -159,19 +172,28 @@ const HomePage = () => {
 
             {/* Main */}
             <main>
-                {/* Cards de los Paises */}
-                {/* <Cards countries={countries} onClose={onClose}/> */}
                 <div className="main-container">
 
-                    <div className="filtro-title">
+                    {/* <div className="filtro-title">
                         <h1>Lista de Países</h1>
+                    </div> */}
+
+                    {/* Opciones de Countries */}
+                    <div className="countries__options">
+                        {/* Mis Destinos*/}
+                        <input type="submit" value="Mis Destinos Locales" />
+
+                        {/* Otros Destinos */}
+                        <input type="submit" value="Otros Destinos" />
                     </div>
+
+                    
 
                     <div className="filtro-container">
                         {/* Contenedor para los filtros y búsqueda */}
                         <div>
                             <div>
-                                <SearchBar onSearch={handleSearch} onClearSearch={handleClearSearch} />
+                                {/* <SearchBar onSearch={handleSearch} onClearSearch={handleClearSearch} /> */}
                                 <ContinentFilter onSelectContinent={handleSelectContinent} />
                                 <ActivityFilter
                                     activities={activities}
@@ -181,11 +203,11 @@ const HomePage = () => {
                             </div> 
                         </div>
                     
-                        <div>
+                        {/* <div>
                             <Link to="/form">
                                 <h3>Agregar Actividad</h3>
                             </Link>
-                        </div>
+                        </div> */}
 
 
                         {/* Contenedor para la ordenación */}
