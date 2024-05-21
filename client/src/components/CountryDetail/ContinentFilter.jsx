@@ -9,7 +9,7 @@ const ContinentFilter = ({ onSelectContinent }) => {
 
   return (
     <>
-        <h3>Filtrar por Continente:</h3>
+        
 
         {/* Etiqueta para mostrar el título */}
         <div className='search-label'>

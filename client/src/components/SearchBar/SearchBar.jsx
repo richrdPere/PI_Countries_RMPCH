@@ -73,39 +73,45 @@ const SearchBar = ({ onSearch, onClearSearch }) => {
     };
     
     return (
-        <>
+        <div className='search__contenedor'>
             {/* Etiqueta para el campo de búsqueda */}
-            <div className='search-label'>
+            {/* <div className='search-label'>
                 <h3>Buscar país por nombre:</h3>
+            </div> */}
+            
+            <div className='search__left'>
+                {/* Campo de entrada de búsqueda */}
+                <input 
+                    className="searchBar__input "
+                    type="text"
+                    value={searchTerm}
+                    onChange={handleInputChange}
+                    onKeyDown={handleKeyDown}
+                    list="predictive-options"
+                />
+                
+                {/* Opciones predictivas */}
+                <datalist id="predictive-options">
+                    {allCountryNames.map((countryName, index) => (
+                        <option key={index} value={countryName} />
+                    ))}
+                </datalist>
+            </div>
+
+            <div className='search__right'>
+                {/* Botón para iniciar la búsqueda */}
+                <button className='search__button' onClick={handleSearch}>Buscar</button>
+                
+                {/* Mostrar mensaje de error */}
+                {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+                
+                {/* Mostrar botón para borrar la búsqueda */}
+                {searchTerm && <button className='search__button' onClick={handleClearSearch}>Borrar búsqueda</button>}
             </div>
             
-            {/* Campo de entrada de búsqueda */}
-            <input 
-                className="search-input"
-                type="text"
-                placeholder="Ingrese el país..."
-                value={searchTerm}
-                onChange={handleInputChange}
-                onKeyDown={handleKeyDown}
-                list="predictive-options"
-            />
             
-            {/* Opciones predictivas */}
-            <datalist id="predictive-options">
-                {allCountryNames.map((countryName, index) => (
-                    <option key={index} value={countryName} />
-                ))}
-            </datalist>
             
-            {/* Botón para iniciar la búsqueda */}
-            <button className='search-button' onClick={handleSearch}>Buscar</button>
-            
-            {/* Mostrar mensaje de error */}
-            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-            
-            {/* Mostrar botón para borrar la búsqueda */}
-            {searchTerm && <button className='search-button' onClick={handleClearSearch}>Borrar búsqueda</button>}
-        </>
+        </div>
     )
 }
 

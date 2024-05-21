@@ -1,5 +1,5 @@
 /* Home Page */
-.header-homePage{
+.header__homePage{
     background-color: var(--negro);
     background-image: url("../../public/img/img_font2.webp");
 
@@ -24,38 +24,30 @@
     color: var(--blanco);
     margin-top: 8rem;
 }
-/* Titulo */
-@media (min-width: 768px) {
-    .header_texto {
-        margin-top: 15rem;
-    }
-}
-.barra {
-    padding-top: 4rem;
-}
 
-@media (min-width: 768px) {
-    .barra {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-}
 
 /* Seach bar*/
 .searchBar{
     position: relative;
 }
-.searchBar_input{
+.search__contenedor{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.searchBar__input{
     position: relative;
-    width: 165%;
+    width: 28rem;
     height: 4.2rem;
     display: block;
     border: 0.2rem solid var(--colorBorderInputs);
     color: var(--negro);
     border-radius: 0.5rem;
     font-size: 1.5rem;
-    padding: 1rem 1.2rem;
+    padding: 1rem 1rem;
 
     outline: none;
     box-shadow: 0 1rem 1rem -8px rgba(0 ,0 ,0 ,0.10);
@@ -64,10 +56,10 @@
     /* line-height: 2.1rem;
     z-index: 1; */
 }
-.searchBar_input:focus{
+.searchBar__input:focus{
     border:  0.2rem solid var(--negro);
 }
-.searchBar_label{
+.searchBar__label{
     position: absolute;
     top: 1rem;
     left: 1.5rem;
@@ -76,8 +68,8 @@
     transition: all 300ms ease-in-out;
     pointer-events: none;
 }
-.searchBar_input:focus~label,
-.searchBar_input:not(:placeholder-shown)~label{
+.searchBar__input:focus~label,
+.searchBar__input:not(:placeholder-shown)~label{
     /* top: -2rem; */
     left: -7rem;
     z-index: 1;
@@ -86,10 +78,10 @@
     text-transform: uppercase;
     color: var(--blanco);
 }
-.searchBar_input::-webkit-input-placeholder{
+.searchBar__input::-webkit-input-placeholder{
     color: transparent;
 }
-.searchBar_input::-moz-placeholder{
+.searchBar__input::-moz-placeholder{
     color: transparent;
 }
 
@@ -97,12 +89,16 @@
 @media (min-width: 768px) {
     .navegacion {
         display: flex;
+        align-items: center;
         gap: 6rem;
     }
 }
 .navegacion_enlace {
     display: block;
     text-align: center;
+    /* height: 5%; */
+    min-width: 45%;
+    /* align-items: stretch; */
     font-size: 1.8rem;
     color: var(--blanco);
     /* border-radius: 1rem;
@@ -132,13 +128,13 @@
 
     /* margin: 5rem auto 0; */
 }
-.header-homePage ul{
+.header__homePage ul{
     display: flex;
     padding: 0;
     width: 400%;
     animation: slide 20s infinite alternate ease-in-out;
 }
-.header-homePage li {
+.header__homePage li {
     width: 100%;
     list-style: none;
     position: relative;
@@ -173,6 +169,43 @@ img{
     }
 }
 
+/* CSS - Barra */
+/* Titulo */
+@media (min-width: 768px) {
+    .header_texto {
+        margin-top: 15rem;
+        
+    }
+}
+.barra__container {
+    padding-top: 4rem;
+    
+}
+
+@media (min-width: 768px) {
+    .barra__container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}
+
+.barra__left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    
+}
+.barra__right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  
+}
+/* CSS - Fin Barra */
 
 /* Contenedor de Cards */
 .cards-container{
@@ -257,15 +290,18 @@ img{
     font-weight: bold; 
     color: orange;
 }
-.search-button{
+.search__button{
     font-weight: bold;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,143,38,1) 0%, rgba(150,126,197,1) 48%, rgba(0,255,222,1) 100%);
+    /* background-color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,143,38,1) 0%, rgba(150,126,197,1) 48%, rgba(0,255,222,1) 100%); */
+    background-color: var(--celeste);
     padding: 5px;
-    border: 1px solid red;
+    border: 0.2rem solid var(--colorBorderInputs);
     border-radius: 5px;
     display: inline-block;
     margin-bottom: 5px;
     cursor: pointer;
+
+    margin-right: 0.5rem;
 }
 
 /* Main */

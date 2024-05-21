@@ -1,0 +1,27 @@
+// Diagrama UML
+
+—https://techlib.net/techedu/relacion-de-muchos-a-muchos/
+—https://blog.visual-paradigm.com/es/what-are-the-six-types-of-relationships-in-uml-class-diagrams/
+
+// Instalacion de PostgresSQL
+
+—https://www.postgresql.org/download/
+—https://www.youtube.com/watch?v=QQr0ZJuwkKM
+
+—https://www.guru99.com/es/postgresql-create-database.html
+
+// Ejemplos para Frontend
+—https://www.booking.com/landmark/pe/machu-picchu-historic-sanctuary.es.html?aid=1234230&pagename=machu-picchu-historic-sanctuary&label=msn-0*nqHFRhCeMZoTnkLG2IEg-80745543579696:tikwd-80745696899975:loc-148:neo:mte:lp148:dec:qsviajes%20a%20machu%20picchu&utm_campaign=Peru%202&utm_medium=cpc&utm_source=bing&utm_term=0*nqHFRhCeMZoTnkLG2IEg&msclkid=f97dc98f4ed8179f4406afb508a37e33&utm_content=LM%20-%20machu-picchu-historic-sanctuary-32096
+https://www.getyourguide.es/s?cmp=bing&ad_id=78134254224998&adgroup_id=1250146032287751&bid_match_type=bb&campaign_id=710376176&device=c&keyword=-l91472/&loc_interest_ms=148&loc_physical_ms=148&match_type=b&msclkid=8ead6097271d1b6f017e06ad6166f1c2&network=o&partner_id=CD951&target_id=dat-2329933859036770:loc-148&utm_adgroup=lc=91472:aguas+calientes|fn=f1|agt=dsa&utm_campaign=dc=15:pe|lc=91472:aguas+calientes|ct=core|ln=109:es|tc=all&utm_keyword=-l91472/&utm_medium=paid_search&utm_query=viajes+a+machu+picchu&utm_source=bing&q=Urubamba&et=238512
+https://www.booking.com/country/pe.es.html?aid=861620&pagename=pe&label=msn-pMxPxFWFL3VKKB6f0sEx7g-80882982436265:tikwd-80883189072255:loc-148:neo:mte:lp148:dec:qsviajes%20a%20peru&utm_campaign=Holidays%20-%20Peru&utm_medium=cpc&utm_source=bing&utm_term=pMxPxFWFL3VKKB6f0sEx7g&msclkid=0941d78f8a0513388194b1b5ccf7dab0&utm_content=Cy%3A167-Peru
+
+—https://www.getyourguide.es/?selectedTab=0a05d1cb-8823-16b8-8188-23eb5ae20000
+
+
+// Dependencias - BACKEND
+—express
+—dotenv
+—nodemon
+—sequelize
+—axious
+—pg
