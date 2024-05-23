@@ -190,8 +190,8 @@ const HomePage = () => {
         <main>
             <div className="main-container">
                 {/* <div className="filtro-title">
-                                <h1>Lista de Países</h1>
-                            </div> */}
+                    <h1>Lista de Países</h1>
+                </div> */}
 
                 {/* Opciones de Countries */}
                 <div className="countries__options">
@@ -202,82 +202,93 @@ const HomePage = () => {
                     <input type="submit" value="Otros Destinos" />
                 </div>
 
-                <div className="filtro-container">
-                    {/* Contenedor para los filtros y búsqueda */}
+                <div className="filtro__container">
+                    {/* 1.- Contenedor para los filtros */}
                     <div>
                         
                         <ContinentFilter onSelectContinent={handleSelectContinent} />
-                        
+                    </div>
+
+                    <div>
                         <ActivityFilter
                             activities={activities}
                             onSelectActivity={handleSelectActivity}
                             setCurrentPage={setCurrentPage}
                         />
-                        
                     </div>
 
-                    {/* <div>
-                                    <Link to="/form">
-                                        <h3>Agregar Actividad</h3>
-                                    </Link>
-                                </div> */}
-
-                    {/* Contenedor para la ordenación */}
-                    <div>
-                        <div className="search-label">
-                            <h6>Ordenar por:</h6>
+                    {/* 2.- Contenedor para la ordenación */}
+                    <div className="container__ordenacion">
+                        <div className="search__label">
+                            <h5>Ordenar por:</h5>
                         </div>
 
-                        <select
-                            className="search-select"
-                            value={sortField}
-                            onChange={(e) => setSortField(e.target.value)}
-                        >
-                            <option value="name">Nombre</option>
-                            <option value="population">Población</option>
-                        </select>
+                        <div className="search__ordenacion">
+                            <select
+                                className="search-select"
+                                value={sortField}
+                                onChange={(e) => setSortField(e.target.value)}
+                            >
+                                <option value="name">Nombre</option>
+                                <option value="population">Población</option>
+                            </select>
 
-                        <button
-                            className="search-button"
-                            onClick={() => setSortDirection("asc")}
-                        >
-                            Ascendente
-                        </button>
-                        <button
-                            className="search-button"
-                            onClick={() => setSortDirection("desc")}
-                        >
-                            Descendente
-                        </button>
+                            <button
+                                className="search-button"
+                                onClick={() => setSortDirection("asc")}
+                            >
+                                Ascendente
+                            </button>
+
+                            <button
+                                className="search-button"
+                                onClick={() => setSortDirection("desc")}
+                            >
+                                Descendente
+                            </button>
+                        </div>
+
+                        
                     </div>
+                
+                </div>
 
-                    {/* Contenedor para la lista de países */}
-                    <div className="country-list">
+                {/* <div>
+                    <Link to="/form">
+                        <h3>Agregar Actividad</h3>
+                    </Link>
+                </div> */}
+
+                    
+
+                {/* Contenedor para la lista de países */}
+                <div className="country__list">
+                    {/* Cards */}
                     {filteredAndSortedCountries
                         .slice(startIndex, endIndex)
                         .map((country) => (
-                        <CountryCard
-                            key={country.id}
-                            country={country}
-                            onShowDetail={handleCountryButtonClick}
-                        />
-                        ))}
-                    </div>
+                            <CountryCard
+                                key={country.id}
+                                country={country}
+                                onShowDetail={handleCountryButtonClick}
+                            />
+                        ))
+                    }
+                </div>
 
-                    {/* Contenedor para la paginación */}
-                    <div className="pagination-container">
+                {/* Contenedor para la paginación */}
+                <div className="pagination-container">
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
                         onPageChange={handlePageChange}
                     />
-                    </div>
-
-                    {/* Mostrar detalles de un país seleccionado */}
-                    {selectedCountryId && (
-                    <CountryDetail countryId={selectedCountryId} />
-                    )}
                 </div>
+
+                {/* Mostrar detalles de un país seleccionado */}
+                {selectedCountryId && (
+                    <CountryDetail countryId={selectedCountryId} />
+                )}   
             </div>
         </main>
     </>

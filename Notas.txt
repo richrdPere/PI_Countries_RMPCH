@@ -25,3 +25,8 @@ https://www.booking.com/country/pe.es.html?aid=861620&pagename=pe&label=msn-pMxP
 —sequelize
 —axious
 —pg
+
+// Conexion
+DB_USER=postgres
+DB_PASSWORD=root
+DB_HOST=localhost

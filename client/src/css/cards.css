@@ -1,0 +1,57 @@
+/* CSS - Cards */
+.card__container{
+    display: flex;
+    flex-direction: column;
+    /* background: linear-gradient(var(--celeste), var(--negro)); */
+    background-color: var(--azul_Oscuro);
+    
+}
+.card__detail{
+    margin: 1rem;
+    background: linear-gradient(var(--blanco), var(--celeste));
+    
+    border-radius: 0rem 2rem 0rem 2rem;
+    padding: 12px;
+    position: relative;
+    width: 35rem;
+}
+.card__flag{
+    position: relative;
+    width: 100%;
+    max-height: 32rem;
+    overflow: hidden;
+}
+.card__flag span{
+    color: var(--negro);
+    /* font-family: var(--fuenteRickAndMorty); */
+    text-shadow: none;
+    font-weight: bold;
+}
+.card__image{
+    width: 100%;
+}
+.card__name{
+    /* position: absolute; */
+    top: 240px;
+    background-color: rgba(75, 218, 75, 0.781);
+    border-radius: 8px;
+    margin-left: 8px;
+    padding: 5px 10px 5px 10px;
+    box-shadow: rgb(17,17,17) 0px 3px 3px;
+    border: 1.5px solid gray;
+}
+.card__info{
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.card__info h3 {
+    font-weight: bold;
+    color: darkblue;
+}
+.card__info span{
+    color: var(--negro);
+}
+
+/* CSS - Fin Cards */

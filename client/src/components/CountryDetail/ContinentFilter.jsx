@@ -8,12 +8,12 @@ const ContinentFilter = ({ onSelectContinent }) => {
     const continents = ['Africa', 'South America', 'Asia', 'Europe', 'Oceania']
 
   return (
-    <>
+    <div className='container__ordenacion'>
         
 
         {/* Etiqueta para mostrar el título */}
-        <div className='search-label'>
-            <h3>Filtrar por Continente:</h3>
+        <div className='search__label'>
+            <h5>Filtrar por Continente:</h5>
         </div>
       
         {/* Select para elegir un continente */}
@@ -30,7 +30,7 @@ const ContinentFilter = ({ onSelectContinent }) => {
         </select>
 
 
-    </>
+    </div>
   )
 }
 

@@ -36,10 +36,10 @@ const ActivityFilter = ({activities, onSelectActivity, onClearActivityFilter}) =
 
 
     return (
-        <>
+        <div className='container__ordenacion'>
             {/* Etiqueta para mostrar el título */}
-            <div className='search-label'>
-                <h3>Filtrar por actividad:</h3>
+            <div className='search__label'>
+                <h5>Filtrar por actividad:</h5>
             </div>
             
             {/* Select para elegir una actividad */}
@@ -51,15 +51,15 @@ const ActivityFilter = ({activities, onSelectActivity, onClearActivityFilter}) =
                 <option value="">Seleccione una actividad</option>
                 {/* Mapear actividades para crear opciones */}
                 {activities.map(activity => (
-                <option key={activity.id} value={activity.name}>
-                    {activity.name}
-                </option>
+                    <option key={activity.id} value={activity.name}>
+                        {activity.name}
+                    </option>
                 ))}
             </select>
             
             {/* Mostrar botón "Borrar filtro" si hay una actividad seleccionada */}
             {selectedActivity && <button className='search-button' onClick={handleClearFilter}>Borrar filtro</button>}
-        </>
+        </div>
     )
 }
 

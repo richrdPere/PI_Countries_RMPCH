@@ -8,6 +8,8 @@ const { getCountriesByName } = require('../controllers/getCountriesByName');
 const { getActivity } = require('../controllers/getActivity');
 const { postActivity } = require('../controllers/postActivitiy');
 
+const { login } = require('../controllers/User/login');
+const { postUsers} = require('../controllers/User/postUsers');
 
 // -------------------------
 // 1.- GET| /countries
@@ -33,6 +35,17 @@ router.get('/activities', getActivity);
 // 5.- POST| /activities
 // ------------------------------
 router.post('/activities', postActivity);
+
+// ------------------------------
+// 5.- GET| /login
+// ------------------------------
+router.get('/login', login);
+
+// ------------------------------
+// 6.- POST| /login
+// ------------------------------
+router.post('/login', postUsers);
+
 
 
 module.exports = router;
