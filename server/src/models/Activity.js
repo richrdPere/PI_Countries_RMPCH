@@ -14,6 +14,10 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        type: {
+            type: DataTypes.ENUM("Cultura", "Gastronomia", "Naturaleza", "Deporte"),
+            allowNull: false,
+        },
         difficulty: {
             type: DataTypes.INTEGER,
             allowNull: false,

@@ -55,17 +55,20 @@ const CountryCard = ({ country }) => {
                     {/* Nombre del país */}
                     {/* <h3>nombre: <span>{country.name}</span></h3> */}
                     {/* Continente del país */}
-                    <h2 className="card__name">{country.name} | <span>{country.id}</span></h2>
-                    <h2>continente: <span>{country.continents}</span></h2>
+                    <h3 className="card__name">
+                        {country.name} | <span>{country.id}</span>
+                    </h3>
+                    {/* <h3 className="card__continent no-pading "><span>{country.continents} | {country.population}</span></h3> */}
+                    <h3 className="card__continent no-pading"><span>{country.continents}</span></h3>
 
-                    {isModalOpen && (
+                    {/* {isModalOpen && (
                         <CountryDetail countryId={country.cca3} onClose={closeModal} />
-                )}
+                    )} */}
                 </div>
 
-                {/* {isModalOpen && (
+                {isModalOpen && (
                     <CountryDetail countryId={country.cca3} onClose={closeModal} />
-                )} */}
+                )}
             </div>
             
             

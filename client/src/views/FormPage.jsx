@@ -31,7 +31,11 @@ const FormPage = () => {
     // Estados locales para almacenar los datos del formulario
     const [name, setName] = useState('');
     const [nameError, setNameError] = useState('');
-    const [nameExistsError, setNameExistsError] = useState(false);; 
+    const [nameExistsError, setNameExistsError] = useState(false);
+
+    const [type, setType]= useState('');
+    const [typeError, setTypeError] = useState('');
+
     const [difficulty, setDifficulty] = useState('');
     const [difficultyError, setDifficultyError] = useState('');
     const [hours, setHours] = useState('');
@@ -48,10 +52,17 @@ const FormPage = () => {
     // Funciones de validación para cada campo del formulario
     const validateName = (value) => {
         if (!value) {
-        return 'Por favor, ingrese el nombre de la actividad';
+            return 'Por favor, ingrese el nombre de la actividad';
         }
         if (/[^a-zA-Z\s]/.test(value)) {
-        return 'El nombre no debe contener caracteres especiales ni números';
+            return 'El nombre no debe contener caracteres especiales ni números';
+        }
+        return '';
+    };
+
+    const validateType = (value) => {
+        if (!value.trim()) {
+            return 'El tipo de Actividad no puede estar vacía.';
         }
         return '';
     };
@@ -59,23 +70,23 @@ const FormPage = () => {
     const validateDifficulty = (value) => {
         const difficultyPattern = /^[1-5]$/;
         if (!difficultyPattern.test(value.toString())) {
-        return 'Debe seleccionar un nivel de dificultad';
+            return 'Debe seleccionar un nivel de dificultad';
         }
         return '';
     };
 
     const validateHours = (value) => {
         if (!value) {
-        return 'Por favor, ingrese las horas';
+            return 'Por favor, ingrese las horas';
         }
         if (isNaN(value) || value < 0) {
-        return 'No se permite texto ni números negativos';
+            return 'No se permite texto ni números negativos';
         }
         if (value > 23) {
-        return 'Debe respetar el límite de 23 horas y 59 minutos';
+            return 'Debe respetar el límite de 23 horas y 59 minutos';
         }
         if (value.length<2) {
-        return 'Debe proporcionar dos digitos en el campo de horas';
+            return 'Debe proporcionar dos digitos en el campo de horas';
         }
         return '';
     };
@@ -99,7 +110,7 @@ const FormPage = () => {
         
     const validateSeason = (value) => {
         if (!value.trim()) {
-        return 'La temporada no puede estar vacía.';
+            return 'La temporada no puede estar vacía.';
         }
         return '';
     };
@@ -114,6 +125,12 @@ const FormPage = () => {
         // Verificar si la actividad ya existe en la lista de actividades
         const activityExists = activities.some(activity => activity.name === formattedValue);
         setNameExistsError(activityExists);
+    };
+
+    const handleTypeChange = (e) => {
+        const value = e.target.value;
+        setType(value);
+        setTypeError(validateType(value));
     };
     
     const handleDifficultyChange = (e) => {
@@ -163,10 +180,12 @@ const FormPage = () => {
         // Validaciones de los campos del formulario
         if (
             !name ||
+            !type ||
             !difficulty ||
             (!hours && !minutes) ||
             !season ||
             difficultyError !== '' || 
+            typeError !== '' ||
             hoursError !== '' || 
             minutesError !== '' ||
             seasonError !== '' || 
@@ -176,6 +195,7 @@ const FormPage = () => {
         ) {
             setErrorMessage('Por favor debe completar todos los campos');
             setNameError(validateName(name));
+            setTypeError(validateType(type));
             setDifficultyError(validateDifficulty(difficulty));
             setHoursError(validateHours(hours));
             setMinutesError(validateMinutes(minutes));
@@ -187,6 +207,7 @@ const FormPage = () => {
         // Crear los datos para la nueva actividad
         const newActivityData = {
             name: name,
+            type: type,
             difficulty: parseInt(difficulty),
             duration: parseFloat(`${hours}.${minutes}`),
             season: season,
@@ -210,6 +231,7 @@ const FormPage = () => {
 
         // Restablecer los campos del formulario y mensajes de error
         setName('');
+        setType(''),
         setDifficulty('');
         setHours('');
         setMinutes('');
@@ -249,6 +271,20 @@ const FormPage = () => {
                     )}
                     <p className='form-error'>{nameError}</p>
                 </div>
+
+                <div className='form-field'>
+                    <div className='search-label'>Tipo de Actividad:</div>
+                        <select className='search-select' value={type} onChange={handleTypeChange}>
+                            <option value="">Seleccione una Actividad</option>
+                            <option value="Cultura">Cultura</option>
+                            <option value="Gastronomia">Gastronomia</option>
+                            <option value="Invierno">Invierno</option>
+                            <option value="Primavera">Primavera</option>
+                        </select>
+
+                    <p className='form-error'>{typeError}</p>
+                </div>
+
 
                 <div className='form-field'>
                     <div className='search-label'>Dificultad:</div>
@@ -327,7 +363,7 @@ const FormPage = () => {
                     </div>
                     {selectedCountriesError && (
                         <p className='form-error'>
-                        Por favor seleccione al menos un país.
+                            Por favor seleccione al menos un país.
                         </p>
                     )}
                 </div>

@@ -9,7 +9,7 @@ exports.getCountriesByName = async (req, res) => {
         // Recuperamos el nombre por Query
         const { name } = req.query;
 
-        //console.log(name);
+        console.log(name);
 
          
         // Validar si existe un nombre

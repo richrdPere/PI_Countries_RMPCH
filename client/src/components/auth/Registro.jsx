@@ -1,10 +1,117 @@
+// Librerías
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useNavigate, Link} from 'react-router-dom';
+
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
+import { getUsers } from '../../redux/actions/loginActions'; 
+import { getCountries } from '../../redux/actions/countriesActions';
+
+// CSS
 import "../../css/loginPage.css";
 
+
+const capitalizeWords = (str) => {
+    return str.toLowerCase();
+  };
+
 const Registro = () => {
+    // Definir estados locales usando hooks
+    const dispatch = useDispatch();// Manejador para activar acciones de Redux
+    const users = useSelector(state => state.users);// Obtener la lista de los usuarios desde el estado de Redux
+    const navigate = useNavigate(); // Hook para la navegación entre páginas
+
+    // Cargar la lista de países al cargar el componente
+    useEffect(() => {
+        dispatch(getUsers());// Disparar la acción para obtener la lista de usuarios desde Redux
+    }, [dispatch]);// Se ejecuta cuando el componente se monta y cuando 'dispatch' cambia
+
+    // DEFINIR ESTADOS DE LOGIN
+    // Para email
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [emailExistError, setEmailExistError] = useState(false);
+
+    // Para Password
+    const [password, setPassword] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+
+    // Para Nombres
+    const [nombre, setNombre] = useState('');
+    const [nombreError, setNombreError] = useState('');
+
+    // Para Apellidos
+    const [lastName, setLastName] = useState('');
+    const [lastNameError, setLastNameError] = useState('');
+
+    // Para País
+    const [country, setCountry] = useState('');
+    const [countryError, setCountryError] = useState('');
+
+    // VALIDACIONES PARA LOS CAMPOS
+    // Validación Email - Falta
+    const validateEmail = (value) => {
+        if (!value) {
+            return 'Por favor, ingrese su email';
+        }
+        if (/[^a-zA-Z\s]/.test(value)) {
+            return 'El nombre no debe contener caracteres especiales ni números';
+        }
+        return '';
+    }
+
+    // Validación Password - Falta
+    const validatePassword = (value) => {
+        if (!value) {
+            return 'Por favor, debe ingresar un password';
+        }
+        return '';
+    }
+
+    // Validación Nombres
+    const validateNombres = (value) => {
+        if (!value) {
+            return 'Por favor, ingrese bien sus nombres';
+        }
+        if (/[^a-zA-Z\s]/.test(value)) {
+            return 'Su nombre no debe contener caracteres especiales ni números';
+        }
+        return '';
+    };
+
+    // Validación Apellidos
+    const validateLastName = (value) => {
+        if (!value) {
+            return 'Por favor, ingrese bien sus apellidos';
+        }
+        if (/[^a-zA-Z\s]/.test(value)) {
+            return 'Su apellido no debe contener caracteres especiales ni números';
+        }
+        return '';
+    };
+
+    // Validación Continente
+    const validateContinent = (value) => {
+        if (!value.trim()) {
+            return 'El campo de Continente no puede estar vacía.';
+        }
+        return '';
+    };
+
+    // FUNCIONES PARA LOS CAMPOS
+    const handleEmailChange = (e) => {
+        const value = e.target.value;
+        const formattedEmail = capitalizeWords(value); // Convertir el email todo a minuscula
+        setEmail(formattedEmail);
+        setEmailError(validateEmail(formattedEmail));
+
+        // Verificar si el usuario ya existe en la lista de actividades
+        const userExists = users.some(user => user.email === formattedEmail);
+        setEmailExistError(userExists);
+    };
+
     // NAVEGACIÓN
-    // Obtener la función de navegación
-    const navigate = useNavigate();
 
     // 1.-Nav - Hacia Log in
     // ----------------------------

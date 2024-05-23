@@ -12,27 +12,27 @@ const { login } = require('../controllers/User/login');
 const { postUsers} = require('../controllers/User/postUsers');
 
 // -------------------------
-// 1.- GET| /countries
+// 1.- GET| /countries | http://localhost:3001/countries
 // -------------------------
 router.get('/countries', getCountries)
 
 // ------------------------------
-// 2.- GET| /countries/:idPais
+// 2.- GET| /countries/:idPais | http://localhost:3001/countries/KEN
 // ------------------------------
 router.get('/countries/:cca3', getCountriesByIdPais);
 
 // ------------------------------
-// 3.- GET| /countries/name="..."
+// 3.- GET| /countries/name="..." | http://localhost:3001/name?name=Chile
 // ------------------------------
 router.get('/name', getCountriesByName); // Falta
 
 // ------------------------------
-// 4.- GET| /activities
+// 4.- GET| /activities | http://localhost:3001/activities
 // ------------------------------
 router.get('/activities', getActivity); 
 
 // ------------------------------
-// 5.- POST| /activities
+// 5.- POST| /activities | 
 // ------------------------------
 router.post('/activities', postActivity);
 

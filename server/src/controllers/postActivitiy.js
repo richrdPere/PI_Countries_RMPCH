@@ -3,7 +3,7 @@ const { Country, Activity } = require("../db");
 exports.postActivity = async (req, res) => {
 
     // Obtenemos los datos del Body dentro de la solicitud
-    const { name, difficulty, duration, season, countries } = req.body;
+    const { name, type, difficulty, duration, season, countries } = req.body;
     
     // Arreglo de Paises
     let countriesArray = [];
@@ -13,6 +13,7 @@ exports.postActivity = async (req, res) => {
         // Crear la actividad turistica en la Base de datos
         const activity = await Activity.create({
             name,
+            type,
             difficulty,
             duration,
             season,

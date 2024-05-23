@@ -41,9 +41,7 @@ const ActivityPage = () => {
                             Mis Destinos
                         </a>
 
-                        <a
-                            className="navegacion_enlace"
-                            onClick={handleEnterToActivities}
+                        <a className="navegacion_enlace"  onClick={handleEnterToActivities}
                         >
                             Mis Destinos
                         </a>

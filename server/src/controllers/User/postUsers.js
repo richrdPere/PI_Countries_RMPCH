@@ -2,7 +2,7 @@ const {User} = require("../../db");
 
 exports.postUsers = async (req, res) => {
     try{
-        const { email, password} = req.body;
+        const { id, email, password, name, lastName, country, continent} = req.body;
         
         if(!email || !password) 
             return res.status(400).json({error: "Faltan datos"});
