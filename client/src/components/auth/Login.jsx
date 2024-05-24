@@ -3,18 +3,22 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link} from 'react-router-dom';
 import "../../css/loginPage.css";
 
+import validation from "../validation";
+
 const Login = ({login}) => {
     // Use States
     const [userData, setUserData] = useState({
         email: "",
         password: ""
     });
+    const [errors, setErrors] = useState({});
+
 
     // FUNCIONES
     // 1.-Funcion - handlerChange
     // ----------------------------
     const handlerChange = (event) => {
-        //setErrors(validation(userData));
+        setErrors(validation(userData));
         setUserData({...userData, [event.target.name]: event.target.value});
     }
 
@@ -38,12 +42,18 @@ const Login = ({login}) => {
                     <div className='form__group'>
                         <input className="form__input" onChange={handlerChange} id='email' placeholder="Email" type="email" name="email"/>
                         <label className="form__label" htmlFor="email">Email</label>
+
+                        {/* {errors.email && <span>{errors.email}</span>} */}
+                        {errors.email ? <span>{errors.email}</span> : null}
                     </div>
 
                     {/* Password */}
                     <div className='form__group'>
                         <input className="form__input" onChange={handlerChange} placeholder="Password" type="password" name="password"/>
                         <label className="form__label" htmlFor="password">Password</label>
+
+                        {/* {errors.password && <span>{errors.password}</span>} */}
+                        {errors.password ? <span>{errors.password}</span>: null}
                     </div>    
 
                     {/* Button */}

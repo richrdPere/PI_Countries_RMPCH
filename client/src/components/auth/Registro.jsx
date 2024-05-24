@@ -67,20 +67,32 @@ const Registro = () => {
     // VALIDACIONES PARA LOS CAMPOS
     // Validación Email - Falta
     const validateEmail = (value) => {
-        if (!value) {
-            return 'Por favor, ingrese su email';
+        // Validacion email
+        if(!value){
+            return "El email es requerido";
+        } 
+        // eslint-disable-next-line no-empty
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)){
+            return "No tiene formato de email";
         }
-        if (/[^a-zA-Z\s]/.test(value)) {
-            return 'El nombre no debe contener caracteres especiales ni números';
+        else if(value.length > 35 ){
+            return "El email no debe tener mas de 35 caracteres";
         }
         return '';
     }
 
     // Validación Password - Falta
     const validatePassword = (value) => {
-        if (!value) {
-            return 'Por favor, debe ingresar un password';
+        if(!value){
+            return "La contraseña es requerida";
         }
+        else if(!/\d/.test(value)){
+            return "La contraseña debe tener al menos un caracter";
+        }
+        else if(value.length < 6 || value.length > 10){
+            return "La contraseña debe tener entre 6 y 10 caracteres";
+        }
+    
         return '';
     }
 
@@ -284,6 +296,8 @@ const Registro = () => {
                         <div className='form__group'>
                             <input onChange={handleEmailChange} className="form__input" id='email' placeholder="Email" type="email" name="email"/>
                             <label className="form__label" htmlFor="email">Email</label>
+
+                            {/* {errors.password ? <span>{errors.password}</span>: null} */}
                         </div>
                         
                         {/* Password */}

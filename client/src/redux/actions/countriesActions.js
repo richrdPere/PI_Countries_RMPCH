@@ -12,7 +12,7 @@ export const getCountriesSuccess = countries => ({
 // Thunk para obtener países
 export const getCountries = () => async dispatch => {
     try {
-        const response = await axios.get('http://localhost:3001/countries'); // Cambia la URL según tu configuración
+        const response = await axios.get('http://localhost:3001/countries/'); // Cambia la URL según tu configuración
         dispatch(getCountriesSuccess(response.data)); // Llama al action creator para obtener países exitosamente
     } catch (error) {
         console.error('Error fetching countries:', error);
