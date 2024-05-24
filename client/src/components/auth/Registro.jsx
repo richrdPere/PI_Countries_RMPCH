@@ -20,13 +20,17 @@ const Registro = () => {
     // Definir estados locales usando hooks
     const dispatch = useDispatch();// Manejador para activar acciones de Redux
     const users = useSelector(state => state.users);// Obtener la lista de los usuarios desde el estado de Redux
+    const countries = useSelector(state => state.countries);// Obtener la lista de países desde el estado de Redux
     const navigate = useNavigate(); // Hook para la navegación entre páginas
 
     // Cargar la lista de países al cargar el componente
-    useEffect(() => {
-        dispatch(getUsers());// Disparar la acción para obtener la lista de usuarios desde Redux
-    }, [dispatch]);// Se ejecuta cuando el componente se monta y cuando 'dispatch' cambia
+    // useEffect(() => {
+    //     dispatch(getUsers());// Disparar la acción para obtener la lista de usuarios desde Redux
+    // }, [dispatch]);// Se ejecuta cuando el componente se monta y cuando 'dispatch' cambia
 
+    useEffect(() => {
+        dispatch(getCountries());
+    }, [dispatch]);
     // DEFINIR ESTADOS DE LOGIN
     // Para email
     const [email, setEmail] = useState('');
@@ -47,7 +51,18 @@ const Registro = () => {
 
     // Para País
     const [country, setCountry] = useState('');
-    const [countryError, setCountryError] = useState('');
+    const [selectedCountries, setSelectedCountries] = useState([]);
+    const [selectedCountriesError, setSelectedCountriesError] = useState(false);
+
+    const [countryByContinent, setCountryByContinent] = useState([]);
+
+    // Para Continente
+    const [continent, setContinent] = useState('');
+    const [continentError, setContinentError] = useState('');
+
+    // Para Mensaje de Error General
+    const [errorMessage, setErrorMessage] = useState('');
+    const [inputBusqueda, setInputBusqueda] = useState('');
 
     // VALIDACIONES PARA LOS CAMPOS
     // Validación Email - Falta
@@ -100,6 +115,7 @@ const Registro = () => {
     };
 
     // FUNCIONES PARA LOS CAMPOS
+    // Para Email
     const handleEmailChange = (e) => {
         const value = e.target.value;
         const formattedEmail = capitalizeWords(value); // Convertir el email todo a minuscula
@@ -109,6 +125,113 @@ const Registro = () => {
         // Verificar si el usuario ya existe en la lista de actividades
         const userExists = users.some(user => user.email === formattedEmail);
         setEmailExistError(userExists);
+    };
+
+    // Para Password 
+    const handlePasswordChange = (e) => {
+        const value = e.target.value;
+        const formattedPassword = capitalizeWords(value); // Convertir la primera letra de cada palabra a mayúscula
+        setPassword(formattedPassword);
+        setPasswordError(validatePassword(formattedPassword));
+    };
+
+    // Para Nombres
+    const handleNombresChange = (e) => {
+        const value = e.target.value;
+        const formattedNombre = capitalizeWords(value); // Convertir la primera letra de cada palabra a mayúscula
+        setNombre(formattedNombre);
+        setNombreError(validateNombres(formattedNombre));
+    };
+
+    // Para Apellidos
+    const handleLastNameChange = (e) => {
+        const value = e.target.value;
+        const formattedApellidos = capitalizeWords(value); // Convertir la primera letra de cada palabra a mayúscula
+        setLastName(formattedApellidos);
+        setLastNameError(validateLastName(formattedApellidos));
+    };
+
+    // Para Continente
+    const handleContinentChange = (e) => {
+        const value = e.target.value;
+        setContinent(value);
+        setContinentError(validateContinent(value));
+
+        //setCountryByContinent(selectedCountries.filter(continent => continent === value))
+       
+    };
+
+    // Para País | Country
+    const handleCountryChange = (e, countryId) => {
+        const isChecked = e.target.checked;
+        if (isChecked) {
+            setSelectedCountries([...selectedCountries, countryId]);
+            setSelectedCountriesError(false); // Eliminar el mensaje de error
+        } else {
+            setSelectedCountries(selectedCountries.filter(id => id !== countryId));
+        }
+    };
+
+    const handleInputBusquedaChange = (e) => {
+        setInputBusqueda(e.target.value);
+    };
+
+    // FUNCIONES PARA CREAR UN NUEVO USUARIO
+    const handleCreateUser = async () => {
+        // Validaciones de los campos del formulario
+        if ( (!email || !password || (!nombre && !lastName) || !continent) || 
+            ( emailError !== '' || emailExistError !== false || nombreError !== '' || lastNameError !== '' || continentError !== '' ||  selectedCountries.length === 0)
+        ) {
+            setErrorMessage('Por favor debe completar todos los campos');
+            setEmailError(validateEmail(email));
+            setPasswordError(validatePassword(password));
+            setNombreError(validateNombres(nombre));
+            setLastNameError(validateLastName(lastName));
+            setContinentError(validateContinent(continent));
+            setSelectedCountriesError(selectedCountries.length === 0);
+            return;
+        }
+
+        // Crear los datos para la nueva actividad
+        const newUserData = {
+            email: email,
+            password: password,
+            nombre: nombre,
+            lastName: lastName,
+            countries: selectedCountries.map(countryId => countries.find(country => country.id === countryId).cca3),
+            continent: continent,
+            
+        };
+
+        try {
+            // Enviar la solicitud POST para crear la actividad
+            const response = await axios.post('http://localhost:3001/login', newUserData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            // Actualizar la lista de actividades
+            dispatch(getUsers());
+            console.log('Usuario creado exitosamente:', response.data);
+
+            // Navegar a la página de inicio
+            navigate('/HomePage');
+
+            // Restablecer los campos del formulario y mensajes de error
+            setEmail('');
+            setPassword(''),
+            setNombre('');
+            setLastName('');
+            setContinent('');
+        
+            setSelectedCountries([]);
+            setSelectedCountriesError(false);
+            setErrorMessage('');
+        } catch (error) {
+            console.error('Error al crear el Usuario:', error);
+            setErrorMessage('Hubo un error al crear el Usuario.');
+        }
     };
 
     // NAVEGACIÓN
@@ -159,13 +282,13 @@ const Registro = () => {
 
                         {/* Email */}
                         <div className='form__group'>
-                            <input className="form__input" id='email' placeholder="Email" type="email" name="email"/>
+                            <input onChange={handleEmailChange} className="form__input" id='email' placeholder="Email" type="email" name="email"/>
                             <label className="form__label" htmlFor="email">Email</label>
                         </div>
                         
                         {/* Password */}
                         <div className='form__group'>
-                            <input className="form__input" placeholder="Password" type="password" name="password"/>
+                            <input onChange={handlePasswordChange} className="form__input" placeholder="Password" type="password" name="password"/>
                             <label className="form__label" htmlFor="password">Password</label>
                         </div>      
                     </section>
@@ -179,28 +302,24 @@ const Registro = () => {
                         <div className='form__name'>
                             {/* Nombres */}
                             <div className='form__group'>
-                                <input className="form__input" id='name' placeholder="Nombres" type="text" name="name"/>
+                                <input onChange={handleNombresChange} className="form__input" id='name' placeholder="Nombres" type="text" name="name"/>
                                 <label className="form__label" htmlFor="name">Nombres</label>
                             </div>
 
                             {/* Apellidos */}
                             <div className='form__country form__group'>
-                                <input className="form__input" id='lastName' placeholder="Apellidos" type="text" name="lastName"/>
+                                <input onChange={handleLastNameChange} className="form__input" id='lastName' placeholder="Apellidos" type="text" name="lastName"/>
                                 <label className="form__label" htmlFor="lastName">Apellidos</label>
                             </div>
                         </div>
+
+                        
                         
                         <div className='form__country'>
-                            {/* Pais */}
-                            <div className='form__group'>
-                                <input className="form__input" id='country' placeholder="País" type="text" name="country"/>
-                                <label className="form__label" htmlFor="country">País</label>
-                            </div>
-
                             {/* Continente */}
                             <div className='form__group'>
                                 {/* <label className="" htmlFor="continent">Continente</label> */}
-                                <select className="form__select" id='continent' name="continent">
+                                <select onChange={handleContinentChange} className="form__select" id='continent' name="continent">
                                     <option>Continente</option>
                                     <option value="Africa">Africa</option>
                                     <option value="South America">South America</option>
@@ -209,11 +328,46 @@ const Registro = () => {
                                     <option value="Oceania">Oceania</option>
                                 </select>
                             </div>
+                            
+                            {/* Pais */}
+                            <div className='form__group'>
+                                <input 
+                                    onChange={handleInputBusquedaChange} 
+                                        
+                                    className="form__input" 
+                                    id='country' 
+                                    placeholder="País" 
+                                    type="text" 
+                                    name="country"
+                                />
+
+                            <label className="form__label" htmlFor="country">País</label>
+
+                                {/* <div className='form__select'>
+                                    {countries
+                                    .filter(pais => pais.name.toLowerCase().includes(inputBusqueda.toLowerCase()))
+                                    .map(pais => (
+                                        <label className='form-checkbox' key={pais.id}>
+                                            <input
+                                                className='search-input'
+                                                type="checkbox"
+                                                value={pais.id}
+                                                checked={selectedCountries.includes(pais.id)}
+                                                onChange={(e) => handleCountryChange(e, pais.id)}
+                                            />
+                                            {pais.name}
+                                        </label>
+                                    ))}
+                                </div> */}
+                                
+                            </div>
+
+                           
                         </div>
 
                         {/* Button */}
                         <div className='form__center'>
-                            <input type="submit" className='form__button' value="Crear Cuenta"/>
+                            <input onClick={handleCreateUser} type="submit" className='form__button' value="Crear Cuenta"/>
                         </div>
                         
                     </section>

@@ -260,7 +260,7 @@
 }
 .form__country{
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-between;
 }
 .form__group {
@@ -348,6 +348,15 @@
     background-color: var(--celeste);
     color: var(--blanco);
     font-weight: bolder;
+}
+.form__select{
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 10px;
 }
 /* CSS - Fin Registro*/
 

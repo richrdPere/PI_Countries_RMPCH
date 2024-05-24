@@ -2,21 +2,26 @@ const {User} = require("../../db");
 
 exports.postUsers = async (req, res) => {
     try{
-        const { id, email, password, name, lastName, country, continent} = req.body;
+        const { email, password, nombres, lastName, country, continent} = req.body;
         
-        if(!email || !password) 
+        if(!email || !password || !nombres || !lastName || !country || !continent  ) 
             return res.status(400).json({error: "Faltan datos"});
 
-        const [user, created] = await User.findOrCreate({
-            where: {email}, 
-            defaults: {
-                password, 
-            },
+        const user = await User.create({
+            email,
+            password, 
+            nombres,
+            lastName,
+            country,
+            continent
         });
 
-        if(!created){
-            return res.status(409).json({error: "El email ya esta registrado"})
-        }
+        console.log(user);
+    
+
+        // if(!created){
+        //     return res.status(409).json({error: "El email ya esta registrado"})
+        // }
         return res.status(200).json({ created: "sucess", user});
 
     } catch(error) {
