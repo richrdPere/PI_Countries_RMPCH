@@ -1,5 +1,5 @@
 // Importamos los Modelos
-const { Activity, Country } = require("../db");
+const { Activity, Country } = require("../../db");
 
 exports.getCountriesByIdPais = async (req, res) => {
     

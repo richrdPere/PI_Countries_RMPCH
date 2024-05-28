@@ -37,8 +37,14 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Country, Activity, User } = sequelize.models;
 
 // Relación entre Modelos - User_Country
-User.belongsToMany(Country, { through: 'User_Country' });
-Country.belongsToMany(User, { through: 'User_Country' });
+User.hasMany(Activity, { 
+  foreignKey: 'activityId',
+  sourceKey: 'id' 
+});
+Activity.belongsTo(User, {
+  foreignKey: 'activityId',
+  targetId: 'id' 
+});
 
 // Relación entre Modelos - Tour
 Country.belongsToMany(Activity, {through: "Tour"});

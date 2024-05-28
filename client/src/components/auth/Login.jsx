@@ -11,6 +11,8 @@ const Login = ({login}) => {
         email: "",
         password: ""
     });
+    // const [isErrorEmail, setIsErrorEmail] = useState(false);
+    // const [isErrorPassword, setIsErrorPassword] = useState(false);
     const [errors, setErrors] = useState({});
 
 
@@ -26,6 +28,12 @@ const Login = ({login}) => {
     // ----------------------------
     const handlerSubmit = (e) => {
         e.preventDefault();
+        // Validamos la conexion
+        // if(!errors.email || !errors.password){
+        //     setIsErrorEmail(true);
+        //     setIsErrorPassword(true);
+        // }
+
         login(userData)
     }
 
@@ -45,6 +53,7 @@ const Login = ({login}) => {
 
                         {/* {errors.email && <span>{errors.email}</span>} */}
                         {errors.email ? <span>{errors.email}</span> : null}
+                        {/* {isErrorEmail ? <span>{errors.email}</span> : null} */}
                     </div>
 
                     {/* Password */}
@@ -54,6 +63,7 @@ const Login = ({login}) => {
 
                         {/* {errors.password && <span>{errors.password}</span>} */}
                         {errors.password ? <span>{errors.password}</span>: null}
+                        {/* {isErrorPassword? <span>{errors.password}</span>: null} */}
                     </div>    
 
                     {/* Button */}

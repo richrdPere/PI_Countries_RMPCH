@@ -1,5 +1,5 @@
 // Importamos los Modelos
-const { Country } = require('../db');
+const { Country } = require('../../db');
 
 // Importamos la API
 // const jsonCountries = require('../../api/db.json')

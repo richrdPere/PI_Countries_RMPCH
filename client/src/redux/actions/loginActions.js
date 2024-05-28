@@ -20,7 +20,7 @@ export const createUserSuccess = users => ({
 // Thunk para obtener Usuarios
 export const getUsers = () => async dispatch => {
     try {
-        const response = await axios.get(`http://localhost:3001/login`);
+        const response = await axios.get(`http://localhost:3001/users`);
         dispatch(getUsersSuccess(response.data)); // Llama al action creator para obtener actividades exitosamente
     } catch (error) {
         console.error("Error fetching users:", error);
@@ -30,7 +30,7 @@ export const getUsers = () => async dispatch => {
 // Thunk para crear una Usuarios
 export const createUser = (userData) => async dispatch => {
     try {
-        const response = await axios.post(`http://localhost:3001/login`,userData);
+        const response = await axios.post(`http://localhost:3001/register`, userData);
         dispatch(createUserSuccess(response.data)); // Llama al action creator para la creación exitosa
     } catch (error) {
         console.error("Error creating user:", error);

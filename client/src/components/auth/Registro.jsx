@@ -135,8 +135,8 @@ const Registro = () => {
         setEmailError(validateEmail(formattedEmail));
 
         // Verificar si el usuario ya existe en la lista de actividades
-        const userExists = users.some(user => user.email === formattedEmail);
-        setEmailExistError(userExists);
+        // const userExists = users.some(user => user.email === formattedEmail);
+        // setEmailExistError(userExists);
     };
 
     // Para Password 
@@ -217,7 +217,7 @@ const Registro = () => {
 
         try {
             // Enviar la solicitud POST para crear la actividad
-            const response = await axios.post('http://localhost:3001/login', newUserData, {
+            const response = await axios.post('http://localhost:3001/register', newUserData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -381,7 +381,9 @@ const Registro = () => {
 
                         {/* Button */}
                         <div className='form__center'>
-                            <input onClick={handleCreateUser} type="submit" className='form__button' value="Crear Cuenta"/>
+                            <button onClick={handleCreateUser} type="submit" className='form__button'>
+                                Crear Cuenta
+                            </button>
                         </div>
                         
                     </section>

@@ -1,4 +1,4 @@
-const { Country, Activity } = require("../db");
+const { Country, Activity } = require("../../db");
 
 exports.postActivity = async (req, res) => {
 

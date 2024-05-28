@@ -1,5 +1,5 @@
 // Importa los modelos Activity, Country, y Tour
-const { Activity, Country } = require('../db');
+const { Activity, Country } = require('../../db');
 
 exports.getActivity = async (req, res) => {
     
@@ -16,8 +16,8 @@ exports.getActivity = async (req, res) => {
         });
 
         if (activities.length === 0) {
-        // Si no se encuentran actividades, enviamos un mensaje en formato JSON
-        return res.status(404).json({ message: 'No se encuentran actividades registradas' });
+            // Si no se encuentran actividades, enviamos un mensaje en formato JSON
+            return res.status(404).json({ message: 'No se encuentran actividades registradas' });
         }
 
         // Creamos un arreglo de objetos con las actividades y los nombres de los países relacionados

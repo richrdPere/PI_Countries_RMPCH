@@ -1,6 +1,6 @@
 // Librerias
 const { Sequelize } = require('sequelize');
-const { Country } = require('../db');
+const { Country } = require('../../db');
 
 exports.getCountriesByName = async (req, res) => {
 

@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+// const {Country} = require('../models/Country.js')
 
 module.exports = (sequelize) => {
     sequelize.define('User', {
@@ -27,7 +28,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        country: {
+        countryUser: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -37,3 +38,4 @@ module.exports = (sequelize) => {
         }
     }, { timestamps: false });
 };
+
