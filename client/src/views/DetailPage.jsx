@@ -17,12 +17,12 @@ const DetailPage = ({ countryId }) => {
 
     useEffect(() => {
         const fetchCountryDetail = async () => {
-        try {
-            const response = await axios.get(`http://localhost:3001/countries/${countryId}`);
-            setCountryDetail(response.data);
-        } catch (error) {
-            console.error('Error fetching country detail:', error);
-        }
+            try {
+                const response = await axios.get(`http://localhost:3001/countries/${countryId}`);
+                setCountryDetail(response.data);
+            } catch (error) {
+                console.error('Error fetching country detail:', error);
+            }
         };
 
         fetchCountryDetail();
@@ -115,20 +115,20 @@ const DetailPage = ({ countryId }) => {
                 {isModalOpen && (
                 <Modal onClose={() => setIsModalOpen(false)}>
                     <div>
-                    <h2>Actividades:</h2>
-                    {countryDetail.Activities.length > 0 ? (
-                        countryDetail.Activities.map((activity, index) => (
-                        <div key={activity.id}>
-                            <h3>Actividad {index + 1}:</h3>
-                            <p>Nombre: {activity.name}</p>
-                            <p>Dificultad: {activity.difficulty}</p>
-                            <p>Duración: {formatDuration(activity.duration)}</p>
-                            <p>Temporada: {activity.season}</p>
-                        </div>
-                        ))
-                    ) : (
-                        <h4>No registradas</h4>
-                    )}
+                        <h2>Actividades:</h2>
+                        {countryDetail.Activities.length > 0 ? (
+                            countryDetail.Activities.map((activity, index) => (
+                            <div key={activity.id}>
+                                <h3>Actividad {index + 1}:</h3>
+                                <p>Nombre: {activity.name}</p>
+                                <p>Dificultad: {activity.difficulty}</p>
+                                <p>Duración: {formatDuration(activity.duration)}</p>
+                                <p>Temporada: {activity.season}</p>
+                            </div>
+                            ))
+                        ) : (
+                            <h4>No registradas</h4>
+                        )}
                     </div>
 
                     <div>

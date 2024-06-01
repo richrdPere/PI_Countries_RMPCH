@@ -5,6 +5,8 @@ import axios from "axios";
 export const GET_USERS_SUCCESS = "GET_USERS_SUCCESS"; // Acción para obtener a los usuarios exitosamente
 export const CREATE_USER_SUCCESS = "CREATE_USER_SUCCESS"; // Acción para crear un usuario exitosamente
 
+
+// ====================================================================
 // Action creator para obtener actividades exitosamente
 export const getUsersSuccess = users => ({
     type: GET_USERS_SUCCESS,
@@ -17,6 +19,8 @@ export const createUserSuccess = users => ({
     payload: users,
 });
 
+
+// ====================================================================
 // Thunk para obtener Usuarios
 export const getUsers = () => async dispatch => {
     try {

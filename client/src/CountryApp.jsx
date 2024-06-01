@@ -38,7 +38,7 @@ function CountryApp() {
       const { email, password } = userData;
       console.log(`Es ${email} y ${password}`)
       
-      const URL = "http://localhost:3001/countries/login/";
+      const URL = "http://localhost:3001/login";
       const { data } = await axios(
         URL + `?email=${email}&password=${password}`
       );
@@ -87,9 +87,19 @@ function CountryApp() {
         {/* ================================= */}
         {/* ====== RUTAS PRINCIPALES ======== */}
         {/* ================================= */}
+        {/* 1.-Ruta Principal - LadingPage */}
+        {/* Ruta para la página de inicio */}
+        <Route
+          path="/"
+          element={
+            <>
+              <LadingPage />
+            </>
+          }
+        ></Route>
 
         {/* 2.-Ruta Acti. Turistica - FormPage */}
-        {/* Ruta para el forumalrio */}
+        {/* Ruta para el formulario */}
         <Route
           path="/form"
           element={
@@ -125,16 +135,7 @@ function CountryApp() {
         {/* ====== RUTAS ADICIONALES ======== */}
         {/* ================================= */}
 
-        {/* 1.-Ruta Principal - LadingPage */}
-        {/* Ruta para la página de inicio */}
-        <Route
-          path="/"
-          element={
-            <>
-              <LadingPage />
-            </>
-          }
-        ></Route>
+        
         {/* 5.-Ruta Login */}
         <Route
           path="/login"

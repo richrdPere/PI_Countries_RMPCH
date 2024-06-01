@@ -20,7 +20,7 @@ import SearchBar from "../components/SearchBar/SearchBar.jsx";
 import "../css/homePage.css";
 
 // Numero de Pages
-const PageSize = 10;
+const PageSize = 12;
 
 const HomePage = () => {
   // Obtener los países y actividades del estado global
@@ -33,6 +33,7 @@ const HomePage = () => {
   const [selectedCountryId, setSelectedCountryId] = useState(null);
   const [selectedContinent, setSelectedContinent] = useState(null);
   const [selectedActivity, setSelectedActivity] = useState(null);
+  
   const [sortField, setSortField] = useState("name");
   const [sortDirection, setSortDirection] = useState("asc");
 

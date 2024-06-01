@@ -5,6 +5,7 @@ import axios from "axios";
 export const GET_ACTIVITIES_SUCCESS = "GET_ACTIVITIES_SUCCESS"; // Acción para obtener actividades exitosamente
 export const CREATE_ACTIVITY_SUCCESS = "CREATE_ACTIVITY_SUCCESS"; // Acción para crear una actividad exitosamente
 
+// =====================================================================
 // Action creator para obtener actividades exitosamente
 export const getActivitiesSuccess = activities => ({
     type: GET_ACTIVITIES_SUCCESS,
@@ -17,6 +18,8 @@ export const createActivitySuccess = activity => ({
     payload: activity,
 });
 
+
+// =====================================================================
 // Thunk para obtener actividades
 export const getActivities = () => async dispatch => {
     try {

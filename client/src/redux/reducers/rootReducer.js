@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import countriesReducer from './countriesReducer'; // Importa el reducer de países
-import activitiesReducer from './activitiesReducer'; // Importa el reducer de actividades
-import loginReducer from './loginReducer';
+import countriesReducer from './countriesReducer'; // Importar el reducer de países
+import activitiesReducer from './activitiesReducer'; // Importar el reducer de actividades
+import loginReducer from './loginReducer'; // Importar el reducer de login
 // Combinación de reducers
 const rootReducer = combineReducers({
   countries: countriesReducer, // Agrega el reducer de países bajo la clave 'countries'
