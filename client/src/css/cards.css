@@ -1,26 +1,12 @@
 /* CSS - Cards */
 .card__container{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
-    /* min-width: 10rem; */
-    /* background: linear-gradient(var(--celeste), var(--blanco)); */
-    background-color: var(--fondoContent);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background-color: transparent;
     
 }
 .card__detail{
-    /* width: 15rem;
-    height: 30rem;
-
-    margin: 1rem;
-    background: linear-gradient(var(--blanco), var(--celeste));
-    
-    
-    padding: 12px;
-    position: relative;
-    width: 35rem; */
-
     background: linear-gradient(var(--blanco), var(--celeste));
     /* box-shadow: 0 0 20px rgba(0,0,0,0.4); */
     border-radius: 1rem;
@@ -28,11 +14,10 @@
     border: 2px solid var(--negro);
     margin: 5rem 2rem 2rem 2rem;
     width: calc(33.3333% - 4rem); /* 1/3 minus the margins (20+20) */
-    /* width: 15rem; */
-    /* height: 30rem; */
     padding: 2rem;
 
     position: relative;
+    
 
     text-align: center;
     transition: all 300ms ease-in-out;
@@ -101,31 +86,49 @@
     color: var(--negro);
 }
 .card__name{
-    /* position: absolute; */
-    display: flex;
-    justify-content: space-evenly;
-    text-align: justify;
-    align-items: center;
-    gap: 1rem;
-    width: 90%;
+    position: absolute;
+    top: 18.5rem;
+    left: 3.5rem;
 
-    /* top: 240px; */
+    font-size: 2.5rem;
+    text-align: center;
+    max-width: 30.5rem;
+
+   
     background-color: rgba(75, 218, 75, 0.781);
     border-radius: 8px;
-    /* margin-left: 8px; */
-    padding: 5px 10px 5px 10px;
+    padding: 0.4rem;
+    
     box-shadow: rgb(17,17,17) 0px 3px 3px;
     border: 1.5px solid gray;
 }
 .card__continent{
-    display: flex;
-    justify-content: space-evenly;
+    /* display: flex;
+    justify-content: space-evenly; */
+
+    position: relative;
+    top: 2rem;
 
     text-align: justify;
-    align-items: center;
-    gap: 1rem;
-    width: 80%;
+    margin: 2.5rem;
+    
+    
+    width: 100%;
 }
+.card__moreInfo{
+    /* position: absolute;
+    right: 1rem; */
+    
+    /* width: 20rem;
+    
 
+    margin: 0 2.5rem; */
+    
+
+    /* left: 30rem;
+    bottom: -30rem;
+    z-index: 1; */
+    
+}
 
 /* CSS - Fin Cards */

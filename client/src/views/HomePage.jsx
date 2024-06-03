@@ -195,13 +195,7 @@ const HomePage = () => {
                 </div> */}
 
                 {/* Opciones de Countries */}
-                <div className="countries__options">
-                    {/* Mis Destinos*/}
-                    <input type="submit" value="Mis Destinos Locales" />
-
-                    {/* Otros Destinos */}
-                    <input type="submit" value="Otros Destinos" />
-                </div>
+                
 
                 <div className="filtro__container">
                     {/* 1.- Contenedor para los filtros */}

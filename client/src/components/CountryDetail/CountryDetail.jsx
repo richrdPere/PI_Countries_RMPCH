@@ -2,9 +2,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+// CSS 
+import '../../css/detailActivities.css';
 import Modal from '../Modal/Modal';
 import axios from "axios";
-import { BottonG } from './CountryDetailStyle';
+
 
 
 // eslint-disable-next-line react/prop-types
@@ -28,11 +30,6 @@ const CountryDetail = ({ countryId }) => {
           fetchCountryDetail();
         }
     ), [countryId];
-
-    // Spinner
-    if(!countryDetail){
-        return <BottonG>Cargando...</BottonG>
-    }
 
     // Función para formatear la duración en horas y minutos
     const formatDuration = (duration) => {
@@ -59,35 +56,57 @@ const CountryDetail = ({ countryId }) => {
 
     return (
         <>
-            <BottonG onClick={() => setIsModalOpen(true)}>Detalle</BottonG>
+            <button className="btn__detail" onClick={() => setIsModalOpen(true)}>Detalle</button>
+
+            
 
             {isModalOpen && (
                 <Modal onClose={() => setIsModalOpen(false)}>
-                <div>
-                    <h2>Actividades:</h2>
-                    {countryDetail.Activities.length > 0 ? (
-                    countryDetail.Activities.map((activity, index) => (
-                        <div key={activity.id}>
-                        <h3>Actividad {index + 1}:</h3>
-                        <p>Nombre: {activity.name}</p>
-                        <p>Dificultad: {activity.difficulty}</p>
-                        <p>Duración: {formatDuration(activity.duration)}</p>
-                        <p>Temporada: {activity.season}</p>
-                        </div>
-                    ))
-                    ) : (
-                    <h4>No registradas</h4>
-                    )}
-                </div>
+                    <div className="modal__items">
 
-                <div>
-                    <h2>Detalles de {countryDetail.name}:</h2>
-                    <p>Continente: {countryDetail.continents}</p>
-                    <p>Capital: {countryDetail.capital}</p>
-                    <p>Subregión: {countryDetail.subregion}</p>
-                    <p>Área: {countryDetail.area}</p>
-                    <p>Población: {countryDetail.population}</p>
-                </div>
+                        <div className="modal__countryDetail">
+                            {/* Titulo - Detalles */}
+                            <h2 className="modal__title">Detalles de <span className="span__title">{countryDetail.name}:</span></h2>
+
+                            <p className="modal__parrafo">Continente: <span className="span__info">{countryDetail.continents}</span></p>
+                            <p className="modal__parrafo">Capital: <span className="span__info">{countryDetail.capital}</span></p>
+                            <p className="modal__parrafo">Subregión: <span className="span__info">{countryDetail.subregion}</span></p>
+                            <p className="modal__parrafo">Área: <span className="span__info">{countryDetail.area} </span></p>
+                            <p className="modal__parrafo">Población: <span className="span__info">{countryDetail.population} </span></p>
+
+                            {/* Imagen de la bandera del país */}
+                            <div className="modal__flag">    
+                                <img 
+                                    className="modal__image" 
+                                    src={countryDetail.flags} 
+                                    alt={`${countryDetail.name} Flag`}
+                                />
+                                
+                            </div>  
+                        </div>
+
+                        <div className="modal__activities">
+                            {/* Titulo - Actividades */}
+                            <h2 className="modal__title">Actividades sobre <span className="span__title">{countryDetail.name}:</span></h2>
+
+                            {countryDetail.Activities.length > 0 ? (
+                                countryDetail.Activities.map((activity, index) => (
+                                    <div key={activity.id} className="modal__Activities">
+                                        <h3>Actividad {index + 1}:</h3>
+                                        <p className="no-margin">Nombre: {activity.name}</p>
+                                        <p className="no-margin">Dificultad: {activity.difficulty}</p>
+                                        <p className="no-margin">Duración: {formatDuration(activity.duration)}</p>
+                                        <p className="no-margin">Temporada: {activity.season}</p>
+                                    </div>
+                                ))
+                                ) : (
+                                <h4>No registradas</h4>
+                            )}
+                        </div>
+
+                        
+                    </div>
+                    
                 </Modal>
             )}
         </>

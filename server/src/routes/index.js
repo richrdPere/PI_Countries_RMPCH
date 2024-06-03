@@ -24,12 +24,12 @@ const { getUsers} = require('../controllers/User/getUsers');
 router.get('/countries', getCountries)
 
 // ------------------------------
-// 2.- GET| /countries/:idPais | http://localhost:3001/countries/KEN
+// 2.- GET| /countries/:idPais | http://localhost:3001/countries/PER
 // ------------------------------
 router.get('/countries/:cca3', getCountriesByIdPais);
 
 // ------------------------------
-// 3.- GET| /countries/name="..." | http://localhost:3001/name?name=Chile
+// 3.- GET| /countries/name="..." | http://localhost:3001/name?name=Peru
 // ------------------------------
 router.get('/name', getCountriesByName); // Falta
 

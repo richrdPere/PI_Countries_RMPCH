@@ -184,3 +184,166 @@ img{
     margin-bottom: 5px;
     cursor: pointer;
 }
+
+/* CSS - Modal */
+
+.modal__container{
+    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(144, 148, 150, 0.8); */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* z-index: 999; */
+    z-index: 999;
+}
+.modal__content {
+    color : white ;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    min-width: 89%;
+    min-height: 90%;
+    background: rgb(4,180,224);
+    background: radial-gradient(circle, rgba(4,180,224,1) 13%, rgba(229,230,231,1) 100%);
+}
+.modal__button{
+    display: inline-block;
+    color: var(--blanco);
+    background-color: var(--celeste);
+
+    text-align: justify;
+    padding: 0.7rem;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    
+    /* margin-bottom: 2rem; */
+    border-radius: 0.7rem;
+
+    width: 9rem;
+    /* height: 2.5rem; */
+
+
+    
+
+    &:hover{
+        background-color: var(--azul_Oscuro);
+        cursor: pointer;
+        font-weight: 700;
+    }
+}
+.modal__items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 2.5rem;
+    padding-top: 3.5rem;
+    /* display: grid;
+    grid-template-rows: ; */
+}
+.modal__countryDetail,
+.modal__activities{
+    flex: 1; /* Hacer que los contenedores tomen el mismo ancho */
+    background: rgb(245,245,245);
+    background: radial-gradient(circle, rgba(245,245,245,1) 86%, rgba(4,180,224,1) 100%);
+   
+    min-height: 73rem;
+    border: 0.2rem solid var(--negro);
+    border-radius: 2rem;
+
+    text-align: justify;    
+    padding: 0 3rem;    
+
+    color: var(--negro);   
+
+}
+/* FIN - CSS Modal*/
+
+/* CSS - PARA DETALLES COUNTRY*/
+.modal__title {
+    text-align: center;    
+    font-size: 3.8rem;
+     
+}
+.span__title{
+    color: var(--celeste);
+}
+.modal__parrafo{
+    font-size: 2.5rem;
+    text-align: justify;
+    color: var(--azul_Oscuro);
+    font-weight: bold;
+    
+}
+.span__info{
+    font-size: 3.1rem;
+    text-align: justify;
+    color: var(--negro);
+    font-weight: bolder;
+    
+}
+.item__cerrar{
+    position: absolute;
+
+    top: 5.5rem;
+    right: 11.5rem;
+}
+.btn__detail{
+    width: 11rem;
+    height: 4rem;
+    
+    background-color: var(--naranja);
+
+    font-size: 1.8rem;
+    color: var(--negro);
+    border-radius: 1rem;
+
+    margin-bottom: 3rem;
+
+    &:hover{
+        background-color: var(--azul_Oscuro);
+        color: var(--blanco);
+        font-weight: bold;
+        cursor: pointer;
+    }
+    /* margin: 0 2.5rem; */
+}
+.modal__flag{
+    /* position: absolute;
+    right: 110rem; */
+
+    
+}
+.modal__image{
+    position: absolute;
+    right: 110rem;
+
+    width: 32rem;
+    height: 20rem;
+    object-fit: cover;
+    /* border: 2px solid var(--negro); */
+    border-radius: 10px;
+/* 
+    box-shadow: 4px  0px 0px black,
+                0px  3px 0px black,
+                -3px  0px 0px black,
+                0px -3px 0px black; */
+    
+                box-shadow: 6px  0px 0px black,
+                6px  9px 0px black,
+                -3px  0px 0px black,
+                0px -3px 0px black;
+}
+
+/* FIN - CSS PARA DETALLES COUNTRY*/
+
+/* CSS - PARA ACTIVITIES*/
+.modal__Activities{
+    background-color: var(--verde);
+    
+}

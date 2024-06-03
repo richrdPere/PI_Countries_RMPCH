@@ -4,7 +4,6 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
 
 // Componentes
-import Culture from "../components/Activities/Culture";
 import Modal from '../components/Modal/Modal';
 
 // CSS

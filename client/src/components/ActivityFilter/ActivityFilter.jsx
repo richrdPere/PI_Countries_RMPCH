@@ -8,6 +8,7 @@ const ActivityFilter = ({activities, onSelectActivity, onClearActivityFilter}) =
 
     // Estado local para la actividad seleccionada
     const [selectedActivity, setSelectedActivity] = useState(null);
+
     // Obtener la función de navegación
     const navigate = useNavigate();
 
@@ -15,8 +16,11 @@ const ActivityFilter = ({activities, onSelectActivity, onClearActivityFilter}) =
     useEffect(() => {
         // Si hay una actividad seleccionada
         if (selectedActivity) {
-        // Buscar la actividad correspondiente en el array de actividades
-        const activity = activities.find(activity => activity.name === selectedActivity);
+            // Buscar la actividad correspondiente en el array de actividades
+
+            const activity = activities.find(activity => activity.name === selectedActivity);
+            // const activity = activities.find(activity => activity.type === selectedActivity);
+            
         // Si se encontró la actividad, llamar a onSelectActivity con los países asociados
         if (activity) {
             onSelectActivity(activity.countries);
@@ -43,7 +47,7 @@ const ActivityFilter = ({activities, onSelectActivity, onClearActivityFilter}) =
             </div>
             
             {/* Select para elegir una actividad */}
-            <select className='search-select'
+            <select className='search__select'
                 value={selectedActivity || ''}
                 onChange={e => setSelectedActivity(e.target.value)}
             >
@@ -55,6 +59,12 @@ const ActivityFilter = ({activities, onSelectActivity, onClearActivityFilter}) =
                         {activity.name}
                     </option>
                 ))}
+
+                {/* {activities.map(activity => (
+                    <option key={activity.id} value={activity.type}>
+                        {activity.type}
+                    </option>
+                ))} */}
             </select>
             
             {/* Mostrar botón "Borrar filtro" si hay una actividad seleccionada */}
