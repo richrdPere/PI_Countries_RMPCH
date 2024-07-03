@@ -213,18 +213,20 @@ img{
 }
 .modal__button{
     display: inline-block;
-    color: var(--blanco);
+    color: var(--negro);
     background-color: var(--celeste);
 
     text-align: justify;
     padding: 0.7rem;
     font-size: 1.7rem;
     text-transform: uppercase;
+
+    transition: all 300ms ease-in-out;
     
     /* margin-bottom: 2rem; */
     border-radius: 0.7rem;
 
-    width: 9rem;
+    width: 4rem;
     /* height: 2.5rem; */
 
 
@@ -234,6 +236,7 @@ img{
         background-color: var(--azul_Oscuro);
         cursor: pointer;
         font-weight: 700;
+        color: var(--blanco);
     }
 }
 .modal__items{
@@ -302,7 +305,7 @@ img{
     font-size: 1.8rem;
     color: var(--negro);
     border-radius: 1rem;
-
+    transition: all 300ms ease-in-out;
     margin-bottom: 3rem;
 
     &:hover{
@@ -342,8 +345,3 @@ img{
 
 /* FIN - CSS PARA DETALLES COUNTRY*/
 
-/* CSS - PARA ACTIVITIES*/
-.modal__Activities{
-    background-color: var(--verde);
-    
-}

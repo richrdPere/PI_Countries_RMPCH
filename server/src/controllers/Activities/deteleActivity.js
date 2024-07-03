@@ -12,13 +12,16 @@ exports.deleteActivity = async (req, res) => {
         // Recuperar el ID
         const { id } = req.params;
 
+        if (!id)
+            return res.status(409).json({ error: "Falta el ID" });
+
         await Activity.destroy({
-            where: {
-                id,
-            }
+            where: { id }
         })
+
+        const allActivities = await Activity.findAll();
         
-        return res.status(204).json({ message: 'La actividad ha sido eliminado' });
+        return res.status(204).json(allActivities);
 
     } catch(error) {
         console.log(error);

@@ -6,6 +6,7 @@ import CountryDetail from '../CountryDetail/CountryDetail'; // Importa el compon
 
 // CSS
 import '../../css/cards.css'
+import DetailPage from "../../views/DetailPage";
 
 
 const CountryCard = ({ country }) => {
@@ -57,8 +58,10 @@ const CountryCard = ({ country }) => {
             
             <div className="card__moreInfo">
                 {isModalOpen && (
-                    <CountryDetail countryId={country.cca3} onClose={closeModal} />
+                    <CountryDetail  onClose={closeModal} />
                 )}
+
+                {/* <DetailPage countryId={country.id}/> */}
             </div> 
 
             

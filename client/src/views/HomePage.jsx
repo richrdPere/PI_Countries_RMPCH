@@ -16,6 +16,9 @@ import ContinentFilter from "../components/CountryDetail/ContinentFilter.jsx";
 import ActivityFilter from "../components/ActivityFilter/ActivityFilter.jsx";
 import SearchBar from "../components/SearchBar/SearchBar.jsx";
 
+// Vista 
+import FormPage from "./FormPage.jsx";
+
 // CSS
 import "../css/homePage.css";
 
@@ -29,7 +32,6 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   // Estados locales para manejar la paginación, país seleccionado y filtros
-  const [currentPage, setCurrentPage] = useState(1);
   const [selectedCountryId, setSelectedCountryId] = useState(null);
   const [selectedContinent, setSelectedContinent] = useState(null);
   const [selectedActivity, setSelectedActivity] = useState(null);
@@ -37,15 +39,29 @@ const HomePage = () => {
   const [sortField, setSortField] = useState("name");
   const [sortDirection, setSortDirection] = useState("asc");
 
+  // Estados para el paginado
+   const [currentPage, setCurrentPage] = useState(1);
+
+  
+  // V1
+  // Calcular índices de inicio y fin para la paginación
+  const startIndex = (currentPage - 1) * PageSize;
+  const endIndex = startIndex + PageSize;
+
+  
+
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
+
+
   // Obtener la lista de países y actividades al cargar el componente
   useEffect(() => {
     dispatch(getCountries());
     dispatch(getActivities());
   }, [dispatch]);
 
-  // Calcular índices de inicio y fin para la paginación
-  const startIndex = (currentPage - 1) * PageSize;
-  const endIndex = startIndex + PageSize;
+  
 
   // Filtrar y ordenar los países según los filtros y orden seleccionados
   const filteredAndSortedCountries = countries
@@ -121,13 +137,13 @@ const HomePage = () => {
   // 1.-Nav - Hacia Activities
   // ----------------------------
   const handleEnterToActivities = () => {
-    navigate("/form"); // Redirige a la ruta '/login'
+    navigate("/form"); // Redirige a la ruta 'Crear Actividad'
   };
 
   // 2.-Nav - Hacia Login
   // ----------------------------
   const handleEnterToLogin = () => {
-    navigate("/login"); // Redirige a la ruta '/register'
+    navigate("/login"); // Redirige a la ruta '/login'
   };
 
   return (
@@ -161,17 +177,14 @@ const HomePage = () => {
                     </div>
                 </section>
 
-
+                        {/*onClick={handleEnterToActivities}*/}
                 {/* Lado Derecho */}
                 <section className="barra__right">
                     {/* Navegacion */}
                     <div className="navegacion">
-                        <a
-                            className="navegacion_enlace"
-                            onClick={handleEnterToActivities}
-                        >
-                            Mis Actividades
-                        </a>
+                        <FormPage/>
+                                               
+                        
                         <a className="navegacion_enlace" onClick={handleEnterToLogin}>
                             Cerrar Sesión
                         </a>
@@ -220,7 +233,7 @@ const HomePage = () => {
 
                         <div className="search__ordenacion">
                             <select
-                                className="search-select"
+                                className="search__select"
                                 value={sortField}
                                 onChange={(e) => setSortField(e.target.value)}
                             >
@@ -229,17 +242,17 @@ const HomePage = () => {
                             </select>
 
                             <button
-                                className="search-button"
-                                onClick={() => setSortDirection("asc")}
-                            >
-                                Ascendente
-                            </button>
+                                    className="search__button"
+                                    onClick={() => setSortDirection("asc")}
+                                >
+                                    +
+                                </button>
 
-                            <button
-                                className="search-button"
-                                onClick={() => setSortDirection("desc")}
-                            >
-                                Descendente
+                                <button
+                                    className="search__button"
+                                    onClick={() => setSortDirection("desc")}
+                                >
+                                    -
                             </button>
                         </div>
 
@@ -247,14 +260,6 @@ const HomePage = () => {
                     </div>
                 
                 </div>
-
-                {/* <div>
-                    <Link to="/form">
-                        <h3>Agregar Actividad</h3>
-                    </Link>
-                </div> */}
-
-                    
 
                 {/* Contenedor para la lista de países */}
                 <div className="country__list">
@@ -272,12 +277,14 @@ const HomePage = () => {
                 </div>
 
                 {/* Contenedor para la paginación */}
-                <div className="pagination-container">
+                <div className="pagination__container no-margin">
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
-                        onPageChange={handlePageChange}
+                        handlePageChange={handlePageChange}
                     />
+
+                    
                 </div>
 
                 {/* Mostrar detalles de un país seleccionado */}

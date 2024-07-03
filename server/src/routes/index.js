@@ -47,12 +47,12 @@ router.delete('/activities/:id', deleteActivity);
 router.get('activities/:id');
 
 // ------------------------------
-// 5.- GET| /login
+// 6.- GET| /login
 // ------------------------------
 router.get('/login', login);
 
 // ------------------------------
-// 6.- POST| /login
+// 7.- POST| /login
 // ------------------------------
 router.post('/register', postUsers);
 router.get('/users', getUsers);

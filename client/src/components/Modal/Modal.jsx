@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 // CSS
 import '../../css/detailActivities.css'
@@ -12,7 +11,7 @@ const Modal = ({ children, onClose }) => {
                 {children}
 
                 <div className='item__cerrar'>
-                    <button className='modal__button no-margin' onClick={onClose}>Cerrar</button>
+                    <button className='modal__button no-margin' onClick={onClose}>X</button>
                 </div>
                 
 

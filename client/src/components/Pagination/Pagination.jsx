@@ -1,45 +1,47 @@
 import React from "react";
-import { Pagination_Container, Pagination_Button } from "./PaginationStyle";
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-    // Crear un array, con un index de pagina segun el total de páginas
+// CSS
+import '../../css/pagination.css'
+
+const Pagination = ({ currentPage, totalPages, handlePageChange }) => {
+
+    // Crear un array, con un index de pagina segun el total de páginas 
     const pageNumbers = Array.from(
         { length: totalPages },
         (_, index) => index + 1
     );
 
     return (
-        <Pagination_Container>
+        <div className="pagination__container">
             {/* Botón "Anterior" */}
-            <Pagination_Button
-                $active={true}
-                onClick={() => onPageChange(currentPage - 1)}
+            <button 
+                className="pagination__button"
+                onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
             >
                 Anterior
-            </Pagination_Button>
+            </button>
 
             {/* Mapear los números de página y renderizar los botones */}
             {pageNumbers.map(pageNumber =>
-                <Pagination_Button
+                <button
+                    className="pagination__button"    
                     key={pageNumber}
-                    active={pageNumber === currentPage}
-                    onClick={() => onPageChange(pageNumber)}
-                    isHovered={pageNumber === currentPage}
+                    onClick={() => handlePageChange(pageNumber)}
                     >
                     {pageNumber}
-                </Pagination_Button>
+                </button>
             )}
 
             {/* Botón "Siguiente" */}
-            <Pagination_Button
-                $active={true}
-                onClick={() => onPageChange(currentPage + 1)}
+            <button
+                className="pagination__button"
+                onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
             >
                 Siguiente
-            </Pagination_Button>
-        </Pagination_Container>
+            </button>
+        </div>
     );
 };
 
