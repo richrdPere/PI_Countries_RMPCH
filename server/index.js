@@ -6,7 +6,7 @@ const { conn } = require('./src/db.js');
 const users = require('./src/utils/users.js');
 
 // Establecer el puerto 
-const PORT = 3001;
+const PORT = 3002;
 
 // Guardar los datos de JSON a la Base de Datos
 async function fetchAndSaveCountries() {
