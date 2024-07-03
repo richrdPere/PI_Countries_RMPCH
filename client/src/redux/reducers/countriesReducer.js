@@ -9,9 +9,9 @@ const countriesReducer = (state = initialState, action) => {
     case GET_COUNTRIES_SUCCESS:
       // Actualiza el estado con los países obtenidos
       return action.payload;
-    case 'GET_COUNTRIES_SUCCESS':
-      // Agrega un nuevo caso para la acción de búsqueda (mismo resultado que el caso anterior)
-      return action.payload;
+    // case 'GET_COUNTRIES_SUCCESS':
+    //   // Agrega un nuevo caso para la acción de búsqueda 
+    //   return action.payload;
     default:
       return state;
   }

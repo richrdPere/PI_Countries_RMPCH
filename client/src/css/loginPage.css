@@ -325,7 +325,7 @@
     
 
     &:hover{
-        background-color: var(--celeste);
+        background-color: var(--azul_Oscuro);
         color: var(--blanco);
         font-weight: bold;
     }
@@ -345,7 +345,7 @@
     font-weight: bolder;
 }
 .form__button:hover{
-    background-color: var(--celeste);
+    background-color: var(--azul_Oscuro);
     color: var(--blanco);
     font-weight: bolder;
 }
@@ -369,5 +369,6 @@
 .form__center{
     display: flex;
     justify-content: center;
+    margin-top: -1rem;
 }
 /* CSS - Fin Login*/

@@ -1,7 +1,7 @@
 /* Form Page */
 .header-homePage{
     background-color: var(--negro);
-    background-image: url("../../public/img/img_font2.webp");
+    background-image: url("../../public/img/img_font5.webp");
 
     height: 50rem;
     background-size: cover;
@@ -349,19 +349,7 @@ img{
     margin-bottom: 15px;
     color: darkblue;
 }
-.form-checkbox{
-    display: block;
-    margin-bottom: 5px;
-}
-.form-countryCheckWrapper{
-    max-height: 200px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 5px;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr); 
-    gap: 10px;
-}
+
 .form-error{
     color: red;
 }
@@ -372,3 +360,172 @@ img{
     align-items: center;
     height: 100vh; /* O la altura que desees */
 }
+
+/* CSS - Activity */
+.activity__container{
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--colorBorderReviews);
+    margin: 2.5rem;
+    width: 95%;
+    padding-bottom: 2rem; 
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 15px;
+    box-shadow: 4px  0px 0px black,
+                0px  3px 0px black,
+                -3px  0px 0px black,
+                0px -3px 0px black;
+}
+.activity__title{
+    text-align: center;
+    color: var(--negro);
+}
+.activity__title span{
+    color: var(--celeste);
+}
+.activity__form{
+    background-color: var(--fondoForm);
+    box-shadow: 4px  0px 0px black,
+                0px  3px 0px black,
+                -3px  0px 0px black,
+                0px -3px 0px black;
+
+    width: 80%;
+    max-height: 60rem;
+
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+
+    gap: 1rem;
+
+    border-radius: 10px;
+}
+.activity__form span{
+    color: var(--celeste)
+}
+.activity__datos,
+.activity__time,
+.activity__paises {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.activity__group{
+    margin-bottom: 0.5rem;
+}
+.activity__group label {
+    color: var(--negro);
+    font-weight: bolder;
+}
+.activity__paises {
+    justify-content: start;
+    padding-left: 7.5rem;
+}
+
+.activity__button{
+    width: 15rem;
+    height: 4rem;
+
+    background-color: var(--celeste);
+    color: var(--negro);
+
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    transition: all 300ms ease-in-out;
+    
+    margin-bottom: 1rem;
+    &:hover{
+        background-color: var(--azul_Oscuro);
+        cursor: pointer;
+        font-weight: bold;
+        color: var(--blanco);
+    }
+}
+
+.activity__input--name {
+    
+    width: 40rem;
+    height: 4.2rem;
+
+    display: block;
+    border: 0.2rem solid var(--celeste);
+
+    border-radius: 0.5rem;
+    font-size: 1.8rem;
+    padding: 1rem 1.2rem;
+
+    outline: none;
+    box-shadow: 0 1rem 1rem -8px rgba(0 ,0 ,0 ,0.10);
+    background: 0 0;
+    /* background-color: transparent; */
+    background-color: var(--blanco);
+}
+.activity__input--duration{
+    width: 9.7rem;
+    height: 3.7rem;
+
+    border: 0.2rem solid var(--celeste);
+    padding: 1rem 1.2rem;
+
+    font-size: 1.5rem;
+}
+.activity__input--paises {
+    width: 22.7rem;
+    height: 3.7rem;
+
+    border: 0.2rem solid var(--celeste);
+    padding: 1rem 1.2rem;
+
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+
+    font-size: 1.5rem;
+}
+.activity__select{
+    position: relative;
+    width: 18rem;
+    height: 4.2rem;
+    display: block;
+    border: 0.2rem solid var(--celeste);
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    padding: 1rem 1.2rem;
+
+    color: var(--negro);
+    outline: none;
+    box-shadow: 0 1rem 1rem -8px rgba(0 ,0 ,0 ,0.10);
+    /* background-color: transparent; */
+    background-color: var(--gris_Claro);
+    transition: all 300ms ease-in-out;
+
+    &:hover{
+        background-color: var(--azul_Oscuro);
+        border: 0.2rem solid var(--negro);
+        color: var(--blanco);
+        font-weight: bold;
+    }
+}
+.activity__checkbox{
+    display: block;
+    margin-bottom: 5px;
+}
+.activity__countryCheckWrapper{
+    max-height: 14rem;
+    overflow-y: auto;
+    border: 2px solid var(--celeste);
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 10px;
+
+    background-color: var(--gris_Claro);
+}
+
+/* Fin - CSS Activity */

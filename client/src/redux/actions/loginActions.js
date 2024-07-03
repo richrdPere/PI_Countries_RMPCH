@@ -25,7 +25,7 @@ export const createUserSuccess = users => ({
 export const getUsers = () => async dispatch => {
     try {
         const response = await axios.get(`http://localhost:3001/users`);
-        dispatch(getUsersSuccess(response.data)); // Llama al action creator para obtener actividades exitosamente
+        dispatch(getUsersSuccess(response.data)); // Llama al action creator para obtener usuarios exitosamente
     } catch (error) {
         console.error("Error fetching users:", error);
     }

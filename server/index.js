@@ -34,8 +34,7 @@ async function fetchAndSaveCountries() {
   }
 }
 
-// Guardar los datos de Users a la Base de Datos
-// console.log(users.length);
+// Guardar los datos de Users a la Base de Datos// console.log(users.length);
 // async function fetchAndSaveUsers(){
 //   try{
 //     const response = await axios.get('http://localhost:5000/users');
@@ -61,6 +60,7 @@ async function fetchAndSaveCountries() {
 // }
 
 // Establecer Conexión a la BD y el Puerto por Defecto
+
 conn.sync({ force: true }).then(() => {
 server.listen(PORT, () => {
 

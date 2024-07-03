@@ -5,8 +5,8 @@ import React, { useState, useEffect } from "react";
 import CountryDetail from '../CountryDetail/CountryDetail'; // Importa el componente CountryDetail
 
 // CSS
-import { DivCard, ImgCard } from './CountryCardsStyle';
 import '../../css/cards.css'
+import DetailPage from "../../views/DetailPage";
 
 
 const CountryCard = ({ country }) => {
@@ -16,29 +16,12 @@ const CountryCard = ({ country }) => {
     // Función para cerrar el modal
     const closeModal = () => {
         setIsModalOpen(false);
-      };
+    };
 
     return (
         <div className="card__container">
-            
-            {/* DISEÑO ANTERIOR*/}
-            {/* <DivCard>
-                
-                <ImgCard src={country.flags} alt={`${country.name} Flag`} />
-
-                <div>
-                    
-                    <h3>{country.name}</h3>
-                    
-                    <h2>{country.continents}</h2>
-                </div>
-
-                {isModalOpen && (
-                    <CountryDetail countryId={country.cca3} onClose={closeModal} />
-                )}
-            </DivCard> */}
-
-            {/* DISEÑO NUEVO */}
+        
+            {/* DISEÑO DE LA CARD */}
             <div className="card__detail">
                 {/* Imagen de la bandera del país */}
                 <div className="card__flag">    
@@ -59,17 +42,29 @@ const CountryCard = ({ country }) => {
                         {country.name} | <span>{country.id}</span>
                     </h3>
                     {/* <h3 className="card__continent no-pading "><span>{country.continents} | {country.population}</span></h3> */}
-                    <h3 className="card__continent no-pading"><span>{country.continents}</span></h3>
+                    <h3 className="card__continent">Cont.   <span>{country.continents}</span></h3>
+                    <h3 className="card__continent">Pobl.   <span>{country.population}</span></h3>
 
-                    {/* {isModalOpen && (
-                        <CountryDetail countryId={country.cca3} onClose={closeModal} />
-                    )} */}
                 </div>
 
-                {isModalOpen && (
-                    <CountryDetail countryId={country.cca3} onClose={closeModal} />
-                )}
+                {/* <div className="">
+                    {isModalOpen && (
+                        <CountryDetail countryId={country.cca3} onClose={closeModal} />
+                    )}
+                </div>  */}
+
+                {/* <button className="btn__detail" onClick={() => setIsModalOpen(true)}>Detalle</button> */}
             </div>
+            
+            <div className="card__moreInfo">
+                {isModalOpen && (
+                    <CountryDetail  onClose={closeModal} />
+                )}
+
+                {/* <DetailPage countryId={country.id}/> */}
+            </div> 
+
+            
             
             
         </div>

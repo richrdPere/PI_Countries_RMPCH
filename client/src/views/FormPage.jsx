@@ -9,7 +9,9 @@ import { getCountries } from '../redux/actions/countriesActions';
 import { getActivities } from '../redux/actions/activitiesActions';
 
 // CSS
+import "../css/homePage.css";
 import "../css/formPage.css";
+import Modal from '../components/Modal/Modal';
 
 
 const capitalizeWords = (str) => {
@@ -23,10 +25,23 @@ const FormPage = () => {
     const activities = useSelector(state => state.activities);// Obtener la lista de actividades desde el estado de Redux
     const navigate = useNavigate();// Hook para la navegación entre páginas
 
+    // Use States
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [allCountryNames, setAllCountryNames] = useState([]);
+    // const [isModalOpen, setIsModalOpen] = useState(true);
+
     // Cargar la lista de países al cargar el componente
     useEffect(() => {
         dispatch(getCountries());// Disparar la acción para obtener la lista de países desde Redux
     }, [dispatch]);// Se ejecuta cuando el componente se monta y cuando 'dispatch' cambia
+
+    // Actualizar la lista de nombres de países cuando cambian los países
+    useEffect(() => {
+        if (countries) {
+            const countryNames = countries.map(country => country.name);
+            setAllCountryNames(countryNames);
+        }
+    }, [countries]);
 
     // Estados locales para almacenar los datos del formulario
     const [name, setName] = useState('');
@@ -48,6 +63,8 @@ const FormPage = () => {
     const [selectedCountriesError, setSelectedCountriesError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [inputBusqueda, setInputBusqueda] = useState('');
+
+    
     
     // Funciones de validación para cada campo del formulario
     const validateName = (value) => {
@@ -247,131 +264,187 @@ const FormPage = () => {
 
     // Renderizar el componente del formulario
     return (
-        <div className='form-container'>
-            <div className='search-container' >
-                <h1>Crear Actividad Turística</h1>
-            </div>
+        <>
+            <a 
+                className="navegacion_enlace"  
+                onClick={() => setIsModalOpen(true)}
+            >
+                Crear Actividad
+            </a>
+                            
 
-            <div className='form-error'>{errorMessage}</div>
+            {isModalOpen && (
+                <Modal onClose={() => setIsModalOpen(false)}>
+                    <div className='activity__container'>
+                        <div className='activity__title'>
+                            <h1>Crear tu <span>Actividad Turística</span></h1>
+                        </div>
 
-            <form>
-                <div className='form-field'>
-                    <div className='search-label'>Nombre:</div>
+                        {/* <div className='form-error'>{errorMessage}</div> */}
 
-                    <input 
-                        className='search-input'
-                        type="text"
-                        value={name}
-                        onChange={handleNameChange}
-                    />
-                    {nameExistsError && (
-                        <p className='form-error'>
-                            ¡Esta actividad ya está registrada!
-                        </p>
-                    )}
-                    <p className='form-error'>{nameError}</p>
-                </div>
+                        <form className='activity__form'>
+                            
+                            <section className='activity__datos'>
+                                {/* Para Nombre */}
+                                
+                                <div className='activity__group'>
+                                    <label htmlFor="name">Nombre de la <span>Actividad:</span></label>
+                                    <input 
+                                        className='activity__input--name'
+                                        type="text"
+                                        placeholder="Nombre"
+                                        value={name}
+                                        onChange={handleNameChange}
+                                        id='name'
+                                        name='name'
+                                    />
+                                    
 
-                <div className='form-field'>
-                    <div className='search-label'>Tipo de Actividad:</div>
-                        <select className='search-select' value={type} onChange={handleTypeChange}>
-                            <option value="">Seleccione una Actividad</option>
-                            <option value="Cultura">Cultura</option>
-                            <option value="Gastronomia">Gastronomia</option>
-                            <option value="Invierno">Invierno</option>
-                            <option value="Primavera">Primavera</option>
-                        </select>
+                                    {nameExistsError && (
+                                        <p className='form-error'>
+                                            ¡Esta actividad ya está registrada!
+                                        </p>
+                                    )}
+                                    
+                                    <p className='form-error'>{nameError}</p>
+                                </div>
+                                
+                                
 
-                    <p className='form-error'>{typeError}</p>
-                </div>
+                                {/* Para Tipo */}
+                                <div className='activity__group'>
 
+                                    <label>Tipo de <span>Actividad:</span></label>
 
-                <div className='form-field'>
-                    <div className='search-label'>Dificultad:</div>
+                                    <select className='activity__select' value={type} onChange={handleTypeChange} name='tipo'>
+                                        {/* <option value="">Tipo de Actividad</option> */}
+                                        <option value="Cultura">Cultura</option>
+                                        <option value="Gastronomia">Gastronomia</option>
+                                        <option value="Naturaleza">Naturaleza</option>
+                                        <option value="Deporte">Deporte</option>
+                                    </select>
 
-                    <select className='search-option' value={difficulty} onChange={handleDifficultyChange}>
-                        <option value="">Seleccione una dificultad</option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                    </select>
+                                    <p className='form-error'>{typeError}</p>
+                                        
+                                </div>
 
-                    <p className='form-error'>{difficultyError}</p>
-                </div>
-                
-                {/* Campos para la duración */}
-                <div className='form-field'>
-                    <div className='search-label'>Duración:</div>
-                        <input 
-                            className='search-input'
-                            type="number"
-                            value={hours}
-                            onChange={handleHoursChange}
-                            placeholder="Horas"
-                        />
-                        <input
-                            className='search-input'
-                            type="number"
-                            value={minutes}
-                            onChange={handleMinutesChange}
-                            placeholder="Minutos"
-                        />
-                    <p className='form-error'>{hoursError || minutesError}</p>
-                </div>
+                                {/* Para Dificultad */}
+                                <div className='activity__group'>
 
-                <div className='form-field'>
-                    <div className='search-label'>Temporada:</div>
-                        <select className='search-select' value={season} onChange={handleSeasonChange}>
-                            <option value="">Seleccione una temporada</option>
-                            <option value="Verano">Verano</option>
-                            <option value="Otoño">Otoño</option>
-                            <option value="Invierno">Invierno</option>
-                            <option value="Primavera">Primavera</option>
-                        </select>
+                                    <label>Su <span>Dificultad:</span></label>
+                                    <select className='activity__select' value={difficulty} onChange={handleDifficultyChange}>
+                                        {/* <option value="">Dificultad</option> */}
+                                        <option value={1}>1</option>
+                                        <option value={2}>2</option>
+                                        <option value={3}>3</option>
+                                        <option value={4}>4</option>
+                                        <option value={5}>5</option>
+                                    </select>
 
-                    <p className='form-error'>{seasonError}</p>
-                </div>
+                                    <p className='form-error'>{difficultyError}</p>
+                                </div>
 
-                <div className='form-field'>
-                    <div className='search-label'>Seleccione los países:</div>
-                    <input
-                        className='search-input'
-                        type="text"
-                        placeholder="Buscar país"
-                        value={inputBusqueda}
-                        onChange={handleInputBusquedaChange}
-                        style={{ marginBottom: '10px' }}
-                    />
+                            </section>
 
-                    <div className='form-countryCheckWrapper'>
-                        {countries
-                        .filter(pais => pais.name.toLowerCase().includes(inputBusqueda.toLowerCase()))
-                        .map(pais => (
-                            <label className='form-checkbox' key={pais.id}>
-                            <input
-                                className='search-input'
-                                type="checkbox"
-                                value={pais.id}
-                                checked={selectedCountries.includes(pais.id)}
-                                onChange={(e) => handleCountryChange(e, pais.id)}
-                            />
-                            {pais.name}
-                            </label>
-                        ))}
+                            <section className='activity__time'>
+                                {/* Campos para la duración */}
+                                <div className='activity__group'>
+                                    <label className=''>Tiempo de <span>Duración:</span></label>
+
+                                    <div>
+                                        <input 
+                                            className='activity__input--duration'
+                                            type="number"
+                                            value={hours}
+                                            onChange={handleHoursChange}
+                                            placeholder="Horas"
+                                        />
+
+                                        <span>  </span> 
+                                        :
+                                        <span>  </span>
+                                        <input
+                                            className='activity__input--duration'
+                                            type="number"
+                                            value={minutes}
+                                            onChange={handleMinutesChange}
+                                            placeholder="Minutos"
+                                        />
+                                    </div>
+                                    
+                                    <p className='form-error'>{hoursError || minutesError}</p>
+                                </div>
+
+                                {/* Para Temporada */}
+                                <div className='activity__group'>
+                                    <label>Su <span>Temporada:</span></label>
+
+                                    <select className='activity__select' value={season} onChange={handleSeasonChange}>
+                                        {/* <option value="">Seleccione una temporada</option> */}
+                                        <option value="Verano">Verano</option>
+                                        <option value="Otoño">Otoño</option>
+                                        <option value="Invierno">Invierno</option>
+                                        <option value="Primavera">Primavera</option>
+                                    </select>
+
+                                    <p className='form-error'>{seasonError}</p>
+                                        
+                                </div>
+                            </section>
+                            
+                            <section className='activity__paises'>
+                                {/* Para Lista de Paises */}
+                                <div className='activity__group'>
+                                    <label>Seleccione <span>los países:</span></label>
+
+                                    <input
+                                        className='activity__input--paises'
+                                        type="text"
+                                        placeholder="Buscar país"
+                                        value={inputBusqueda}
+                                        onChange={handleInputBusquedaChange}
+            
+                                    />
+
+                                    <div className='activity__countryCheckWrapper'>
+                                        {countries
+                                        .filter(pais => pais.name.toLowerCase().includes(inputBusqueda.toLowerCase()))
+                                        .map(pais => (
+                                            <label className='form-activity__checkbox' key={pais.id}>
+                                                <input
+                                                    className='search-input'
+                                                    type="checkbox"
+                                                    value={pais.id}
+                                                    checked={selectedCountries.includes(pais.id)}
+                                                    onChange={(e) => handleCountryChange(e, pais.id)}
+                                                />
+                                                {pais.name}
+                                            </label>
+                                        ))}
+                                    </div>
+                                    {selectedCountriesError && (
+                                        <p className='form-error'>
+                                            Por favor seleccione al menos un país.
+                                        </p>
+                                    )}
+                                </div>
+                            </section>
+                            
+                            {/* Button */}
+                            <div className='form__center'>
+                                <button className='activity__button' type="button" onClick={handleCreateActivity}>
+                                    Crear Actividad
+                                </button>
+                            </div>
+                            
+                        </form>
                     </div>
-                    {selectedCountriesError && (
-                        <p className='form-error'>
-                            Por favor seleccione al menos un país.
-                        </p>
-                    )}
-                </div>
-                <button className='search-button' type="button" onClick={handleCreateActivity}>
-                    Crear Actividad
-                </button>
-            </form>
-        </div>
+                    
+                </Modal>
+            )}
+
+            
+        </>
     );
 }
 

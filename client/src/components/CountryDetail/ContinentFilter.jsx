@@ -17,9 +17,9 @@ const ContinentFilter = ({ onSelectContinent }) => {
         </div>
       
         {/* Select para elegir un continente */}
-        <select className='search-select' onChange={(e) => onSelectContinent(e.target.value)}>
+        <select className='search__select' onChange={(e) => onSelectContinent(e.target.value)}>
             {/* Opción por defecto para mostrar todos los continentes */}
-            <option className='search-option' value="">Todos los continentes</option>
+            <option className='search__option' value="">Todos los continentes</option>
             
             {/* Mapear los continentes para crear opciones */}
             {continents.map((continent, index) => (

@@ -1,0 +1,19 @@
+.pagination__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en dispositivos pequeños */
+    
+}
+.pagination__button{
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5em;
+   
+    border: 1px solid orange;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+        margin: 5px 0;
+    }
+}

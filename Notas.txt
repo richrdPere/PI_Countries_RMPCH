@@ -30,3 +30,10 @@ https://www.booking.com/country/pe.es.html?aid=861620&pagename=pe&label=msn-pMxP
 DB_USER=postgres
 DB_PASSWORD=root
 DB_HOST=localhost
+
+// SQL Shell
+\d
+
+// Guia de GIT 
+
+https://github.com/JaluGJ/jalu-guide/blob/main/github/README.md#crear-ramas-y-protegerlas

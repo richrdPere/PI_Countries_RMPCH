@@ -51,10 +51,10 @@ function CountryApp() {
   };
 
   // Use Effect
-  useEffect(() => {
-    !isAuth && navigate("/");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuth]);
+  // useEffect(() => {
+  //   !isAuth && navigate("/");
+    
+  // }, [isAuth]);
 
   // 2.-Funcion - onClose
   // ----------------------
