@@ -7,11 +7,12 @@ import CountryDetail from '../CountryDetail/CountryDetail'; // Importa el compon
 // CSS
 import '../../css/cards.css'
 import DetailPage from "../../views/DetailPage";
+import Modal from "../Modal/Modal";
 
 
 const CountryCard = ({ country }) => {
     // Use States
-    const [isModalOpen, setIsModalOpen] = useState(true); // Inicialmente se mostrará automáticamente
+    const [isModalOpen, setIsModalOpen] = useState(false); // Inicialmente se mostrará automáticamente
 
     // Función para cerrar el modal
     const closeModal = () => {
@@ -53,15 +54,18 @@ const CountryCard = ({ country }) => {
                     )}
                 </div>  */}
 
-                {/* <button className="btn__detail" onClick={() => setIsModalOpen(true)}>Detalle</button> */}
+                <button className="btn__detail" onClick={() => setIsModalOpen(true)}>Detalle</button>
             </div>
             
             <div className="card__moreInfo">
                 {isModalOpen && (
-                    <CountryDetail  onClose={closeModal} />
+                    <Modal onClose={() => setIsModalOpen(false)}>
+                        <CountryDetail countryId={country.cca3} />
+                    </Modal>
+                    
                 )}
 
-                {/* <DetailPage countryId={country.id}/> */}
+                
             </div> 
 
             
